@@ -1,8 +1,11 @@
 {
   "manager": {
-    "version": "1.0.0",
-    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SpireDarkModManager.exe",
-    "changelog": "v1.0.0 首次發布！\n1. 支持五大類別模組安裝與啟用\n2. 原生 Windows Junction 掛載技術，毫秒級切換配置\n3. 全自動 Steam 遊戲安裝路徑偵測與配置管理\n4. 支持多套獨立模組配置存檔切換\n5. 內置模組相依性缺失與 ID 重複衝突檢測功能\n6. 支援自動在線檢查更新"
+    "version": "1.0.1",
+    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.1/SpireDarkModManager.exe",
+    "changelog": [
+      "ci: fix git push origin in release.yml",
+      ""
+    ]
   },
   "mods": [
     {
