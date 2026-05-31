@@ -214,7 +214,7 @@ function renderModsGrid() {
     });
     
     const totalCount = allMods.length;
-    const enabledCount = allMods.filter(m => enabledModIds.includes(m.id)).length;
+    const enabledCount = allMods.filter(m => m.installed !== false && enabledModIds.includes(m.id)).length;
     document.getElementById("active-count").innerText = `${enabledCount} / ${totalCount}`;
 
     if (filteredMods.length === 0) {
@@ -326,7 +326,7 @@ function detectConflicts() {
     const enabledIds = appConfig.profiles[activeProfile] || [];
     const conflicts = [];
     
-    const enabledMods = allMods.filter(m => enabledIds.includes(m.id));
+    const enabledMods = allMods.filter(m => m.installed !== false && enabledIds.includes(m.id));
     
     // 1. Check duplicate IDs
     const idMap = {};
