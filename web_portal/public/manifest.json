@@ -1,9 +1,9 @@
 {
   "manager": {
-    "version": "1.0.1",
-    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.1/SpireDarkModManager.exe",
+    "version": "1.0.2",
+    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.2/SpireDarkModManager.exe",
     "changelog": [
-      "fix: resolve PyInstaller 6.x build and compatibility issues on CI",
+      "fix: resolve workspace path detection and disable list sync issues",
       ""
     ]
   },
