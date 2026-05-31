@@ -484,14 +484,14 @@ def api_select_folder():
 @enable_cors
 def api_mods():
     config = load_config()
-    mods_list = []
     
-    # 1. Scan compilation pack categories
+    # 1. Scan local compilation categories
+    local_compilation_mods = {} # id_lower -> mod_info
+    
     for cat in CATEGORIES:
         cat_path = os.path.join(WORKSPACE_DIR, cat)
         if not os.path.exists(cat_path):
             continue
-        
         try:
             for mod_dir in sorted(os.listdir(cat_path)):
                 mod_path = os.path.join(cat_path, mod_dir)
@@ -501,7 +501,7 @@ def api_mods():
                 json_files = find_mod_jsons_fast(mod_path)
                 
                 if not json_files:
-                    mods_list.append({
+                    m_info = {
                         "id": mod_dir,
                         "name": mod_dir,
                         "author": "未知",
@@ -511,8 +511,9 @@ def api_mods():
                         "description": "無模組描述資訊（未找到 JSON）",
                         "category": cat,
                         "folder_name": mod_dir,
-                        "target_link_dir": mod_path
-                    })
+                        "target_link_dir": mod_path,
+                        "installed": True
+                    }
                 else:
                     found_valid = False
                     for j_file in json_files:
@@ -547,7 +548,7 @@ def api_mods():
                             m_gameplay = bool(data.get('affects_gameplay', True))
                             m_desc = data.get('description', "無模組描述").replace('\r', '').replace('\n', ' ')
                             
-                            mods_list.append({
+                            m_info = {
                                 "id": m_id,
                                 "name": m_name,
                                 "author": m_author,
@@ -557,14 +558,15 @@ def api_mods():
                                 "description": m_desc,
                                 "category": cat,
                                 "folder_name": mod_dir,
-                                "target_link_dir": os.path.dirname(j_file)
-                            })
+                                "target_link_dir": os.path.dirname(j_file),
+                                "installed": True
+                            }
                             found_valid = True
                             break
                         except Exception:
                             pass
                     if not found_valid:
-                        mods_list.append({
+                        m_info = {
                             "id": mod_dir,
                             "name": f"{mod_dir} (解析失敗)",
                             "author": "未知",
@@ -574,21 +576,88 @@ def api_mods():
                             "description": "JSON 解析出錯或未找到合法描述檔",
                             "category": cat,
                             "folder_name": mod_dir,
-                            "target_link_dir": mod_path
-                        })
+                            "target_link_dir": mod_path,
+                            "installed": True
+                        }
+                local_compilation_mods[m_info["id"].lower()] = m_info
         except Exception as e:
             print(f"Error scanning category {cat}: {e}")
             
-    # 2. Scan game path's local mods (mods/ and mods_disabled/)
+    # 2. Try to fetch online manifest
+    online_mods = []
+    try:
+        import urllib.request
+        req = urllib.request.Request(MANIFEST_URL, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=3) as response:
+            data = json.loads(response.read().decode('utf-8'))
+            online_mods = data.get("mods", [])
+    except Exception as e:
+        print(f"Failed to fetch online manifest, showing local mods only: {e}")
+
+    # Map traditional Chinese categories to local simplified Chinese category folders
+    CATEGORY_MAP = {
+        "必裝前置": "必装前置",
+        "必装前置": "必装前置",
+        "功能類": "功能类",
+        "功能类": "功能类",
+        "玩法擴展類": "玩法扩展类",
+        "玩法扩展类": "玩法扩展类",
+        "皮膚美化類": "皮肤美化类",
+        "皮肤美化类": "皮肤美化类",
+        "角色擴展類": "角色扩展类",
+        "角色扩展类": "角色扩展类"
+    }
+
+    merged_mods = []
+    processed_local_ids = set()
+
+    # 3. Process online mods
+    for om in online_mods:
+        om_id = om.get("id")
+        om_id_lower = om_id.lower() if om_id else ""
+        
+        # Determine target simplified category
+        online_cat = om.get("category", "")
+        mapped_cat = CATEGORY_MAP.get(online_cat, "功能类") # default to functional if unknown
+        
+        if om_id_lower in local_compilation_mods:
+            # Local mod exists! Merge details
+            lm = local_compilation_mods[om_id_lower]
+            lm["download_url"] = om.get("download_url") # keep download url just in case
+            lm["installed"] = True
+            merged_mods.append(lm)
+            processed_local_ids.add(om_id_lower)
+        else:
+            # Online mod does not exist locally
+            merged_mods.append({
+                "id": om_id,
+                "name": om.get("name", om_id),
+                "author": om.get("author", "未知"),
+                "version": om.get("version", "-"),
+                "dependencies": om.get("dependencies", []), # online dependencies format is list of strings
+                "affects_gameplay": True,
+                "description": om.get("description", "無詳細描述"),
+                "category": mapped_cat,
+                "download_url": om.get("download_url"),
+                "installed": False
+            })
+
+    # 4. Add any local compilation mods that are NOT in the online manifest (custom local mods)
+    for lm_id_lower, lm in local_compilation_mods.items():
+        if lm_id_lower not in processed_local_ids:
+            merged_mods.append(lm)
+
+    # 5. Scan game path's local mods (mods/ and mods_disabled/)
     game_path = config.get("game_path")
     if game_path and is_path_safe_to_check(game_path):
         local_mods = scan_game_local_mods(game_path)
-        # Filter out local mods that have the same ID as any compilation pack mod to prevent duplication
-        compilation_ids = {m["id"].lower() for m in mods_list}
-        filtered_local_mods = [lm for lm in local_mods if lm["id"].lower() not in compilation_ids]
-        mods_list.extend(filtered_local_mods)
-        
-    return json.dumps(mods_list, ensure_ascii=False)
+        compilation_ids = {m["id"].lower() for m in merged_mods}
+        for lm in local_mods:
+            if lm["id"].lower() not in compilation_ids:
+                lm["installed"] = True
+                merged_mods.append(lm)
+                
+    return json.dumps(merged_mods, ensure_ascii=False)
 
 @route('/api/apply', method=['POST', 'OPTIONS'])
 @enable_cors
@@ -869,6 +938,40 @@ del "%~f0"
             try: os.remove(temp_new_exe)
             except: pass
         return {"status": "error", "message": f"執行更新時發生錯誤: {str(e)}"}
+
+@route('/api/install_mod', method=['POST', 'OPTIONS'])
+@enable_cors
+def api_install_mod():
+    import urllib.request
+    import zipfile
+    import io
+    
+    download_url = request.json.get("download_url")
+    category = request.json.get("category")
+    mod_id = request.json.get("id")
+    
+    if not download_url or not category or not mod_id:
+        return {"status": "error", "message": "無效的安裝參數"}
+        
+    try:
+        # Verify category folder exists or create it
+        target_cat_dir = os.path.join(WORKSPACE_DIR, category)
+        if not os.path.exists(target_cat_dir):
+            os.makedirs(target_cat_dir)
+            
+        # Download zip file into memory
+        req = urllib.request.Request(download_url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=60) as response:
+            zip_data = response.read()
+            
+        # Extract zip files directly to the category folder
+        z = zipfile.ZipFile(io.BytesIO(zip_data))
+        z.extractall(target_cat_dir)
+        z.close()
+        
+        return {"status": "success", "message": f"模組 {mod_id} 安裝成功！"}
+    except Exception as e:
+        return {"status": "error", "message": f"安裝過程中發生錯誤: {str(e)}"}
 
 if __name__ == "__main__":
     PORT = 18690

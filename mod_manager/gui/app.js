@@ -65,6 +65,14 @@ const api = {
             body: JSON.stringify({ download_url: downloadUrl })
         });
         return await res.json();
+    },
+    async install_mod(downloadUrl, category, id) {
+        const res = await fetch('/api/install_mod', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ download_url: downloadUrl, category: category, id: id })
+        });
+        return await res.json();
     }
 };
 
@@ -192,9 +200,15 @@ function renderModsGrid() {
             mod.id.toLowerCase().includes(searchQuery);
             
         const isEnabled = enabledModIds.includes(mod.id);
-        const matchesStatus = currentStatus === "all" || 
-            (currentStatus === "enabled" && isEnabled) ||
-            (currentStatus === "disabled" && !isEnabled);
+        
+        let matchesStatus = true;
+        if (currentStatus === "enabled") {
+            matchesStatus = (mod.installed !== false) && isEnabled;
+        } else if (currentStatus === "disabled") {
+            matchesStatus = (mod.installed !== false) && !isEnabled;
+        } else if (currentStatus === "not_installed") {
+            matchesStatus = (mod.installed === false);
+        }
             
         return matchesCategory && matchesSearch && matchesStatus;
     });
@@ -215,8 +229,9 @@ function renderModsGrid() {
     
     filteredMods.forEach(mod => {
         const isEnabled = enabledModIds.includes(mod.id);
+        const isInstalled = mod.installed !== false;
         const card = document.createElement("div");
-        card.className = `mod-card`;
+        card.className = `mod-card${isInstalled ? '' : ' not-installed'}`;
         card.setAttribute("data-id", mod.id);
         card.setAttribute("data-cat-tag", mod.category);
         
@@ -227,6 +242,22 @@ function renderModsGrid() {
         else if (mod.category === "皮肤美化类") badgeClass = "badge-skin";
         else if (mod.category === "角色扩展类") badgeClass = "badge-char";
         else if (mod.category === "原本模組") badgeClass = "badge-local";
+
+        let footerContent = "";
+        if (isInstalled) {
+            footerContent = `
+                <label class="switch" onclick="event.stopPropagation();">
+                    <input type="checkbox" class="mod-toggle" data-id="${mod.id}" ${isEnabled ? 'checked' : ''}>
+                    <span class="slider"></span>
+                </label>
+            `;
+        } else {
+            footerContent = `
+                <button class="btn btn-download-mod" onclick="event.stopPropagation();" data-id="${mod.id}" data-url="${mod.download_url}" data-cat="${mod.category}">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> 下載安裝
+                </button>
+            `;
+        }
 
         card.innerHTML = `
             <div class="card-header">
@@ -239,10 +270,7 @@ function renderModsGrid() {
             <div class="card-desc">${mod.description || '無描述資訊'}</div>
             <div class="card-footer">
                 <span class="card-version">V ${mod.version}</span>
-                <label class="switch" onclick="event.stopPropagation();">
-                    <input type="checkbox" class="mod-toggle" data-id="${mod.id}" ${isEnabled ? 'checked' : ''}>
-                    <span class="slider"></span>
-                </label>
+                ${footerContent}
             </div>
         `;
         
@@ -250,11 +278,41 @@ function renderModsGrid() {
         grid.appendChild(card);
     });
     
+    // Toggle active state
     document.querySelectorAll(".mod-toggle").forEach(toggle => {
         toggle.addEventListener("change", async (e) => {
             const mId = e.target.getAttribute("data-id");
             const checked = e.target.checked;
             await toggleModState(mId, checked);
+        });
+    });
+    
+    // Download online mod
+    document.querySelectorAll(".btn-download-mod").forEach(btn => {
+        btn.addEventListener("click", async (e) => {
+            const mId = btn.getAttribute("data-id");
+            const dUrl = btn.getAttribute("data-url");
+            const cat = btn.getAttribute("data-cat");
+            
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> 下載中...`;
+            
+            try {
+                const res = await api.install_mod(dUrl, cat, mId);
+                if (res.status === "success") {
+                    btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> 已完成`;
+                    // Refresh mods list asynchronously
+                    await loadModsAsync();
+                } else {
+                    alert("安裝失敗: " + res.message);
+                    btn.disabled = false;
+                    btn.innerHTML = `<i class="fa-solid fa-cloud-arrow-down"></i> 下載安裝`;
+                }
+            } catch (err) {
+                alert("安裝過程中出錯: " + err);
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa-solid fa-cloud-arrow-down"></i> 下載安裝`;
+            }
         });
     });
     
@@ -410,9 +468,13 @@ function updateDrawerUI(modId) {
     
     const activeProfile = appConfig.active_profile;
     const isEnabled = (appConfig.profiles[activeProfile] || []).includes(modId);
+    const isInstalled = mod.installed !== false;
     
     const btn = document.getElementById("btn-drawer-toggle");
-    if (isEnabled) {
+    if (!isInstalled) {
+        btn.innerText = "下載並安裝此模組";
+        btn.className = "btn btn-drawer-toggle";
+    } else if (isEnabled) {
         btn.innerText = "禁用此模組";
         btn.className = "btn btn-drawer-toggle enabled";
     } else {
@@ -500,9 +562,36 @@ function bindEvents() {
     // 5. Drawer Action toggle button
     document.getElementById("btn-drawer-toggle").addEventListener("click", async () => {
         if (!selectedModId) return;
-        const activeProfile = appConfig.active_profile;
-        const isEnabled = (appConfig.profiles[activeProfile] || []).includes(selectedModId);
-        await toggleModState(selectedModId, !isEnabled);
+        const mod = allMods.find(m => m.id === selectedModId);
+        if (!mod) return;
+        
+        const isInstalled = mod.installed !== false;
+        if (!isInstalled) {
+            const btn = document.getElementById("btn-drawer-toggle");
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> 下載中...`;
+            try {
+                const res = await api.install_mod(mod.download_url, mod.category, mod.id);
+                if (res.status === "success") {
+                    btn.disabled = false;
+                    btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> 安裝成功`;
+                    await loadModsAsync();
+                    closeDrawer();
+                } else {
+                    alert("安裝失敗: " + res.message);
+                    btn.disabled = false;
+                    btn.innerText = "下載並安裝此模組";
+                }
+            } catch (err) {
+                alert("下載失敗: " + err);
+                btn.disabled = false;
+                btn.innerText = "下載並安裝此模組";
+            }
+        } else {
+            const activeProfile = appConfig.active_profile;
+            const isEnabled = (appConfig.profiles[activeProfile] || []).includes(selectedModId);
+            await toggleModState(selectedModId, !isEnabled);
+        }
     });
     
     // 6. Select profile dropdown

@@ -1062,3 +1062,46 @@ input:checked + .slider:before {
     color: var(--text-muted);
 }
 
+/* Not Installed Mod Card Styling */
+.mod-card.not-installed {
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    opacity: 0.8;
+    background-color: rgba(26, 26, 26, 0.4);
+}
+
+.mod-card.not-installed:hover {
+    border-color: rgba(244, 180, 26, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+
+.mod-card.not-installed .card-desc {
+    color: var(--text-muted);
+}
+
+.btn-download-mod {
+    background: transparent;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all var(--transition-fast);
+}
+
+.btn-download-mod:hover {
+    background: var(--accent-gold);
+    color: var(--bg-dark);
+}
+
+.btn-download-mod:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+}
+
