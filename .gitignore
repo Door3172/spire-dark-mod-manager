@@ -1,0 +1,33 @@
+# PyInstaller build files
+build/
+dist/
+*.spec
+*.exe
+*.tmp
+
+# Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local config
+config.json
+updater.bat
+
+# Game mod directories (these are assets and local files, not manager source code)
+必装前置/
+功能类/
+玩法扩展类/
+皮肤美化类/
+角色扩展类/
+往期整合包（本人自制非盗版）/
+
+# Node / Frontend
+web_portal/node_modules/
+web_portal/dist/
+web_portal/.env
+
+# OS files
+.DS_Store
+Thumbs.db

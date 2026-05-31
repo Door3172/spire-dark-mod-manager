@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        // Prevent pythonnet recursion bug by blocking window.native object introspection
+        try {
+            Object.defineProperty(window, 'native', {
+                get: function() { return null; },
+                set: function() {},
+                configurable: true
+            });
+        } catch(e) {
+            console.warn("Failed to block window.native", e);
+        }
+    </script>
+    <title>Spire Dark Mod Manager</title>
+    <!-- FontAwesome for icons (Fast Mirror) -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-ghost brand-icon"></i>
+                <div class="brand-text">
+                    <span class="spire">SPIRE</span><span class="dark">DARK</span>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <label class="section-label"><i class="fa-solid fa-users-cog"></i> 模組配置存檔</label>
+                <div class="profile-selector-container">
+                    <select id="profile-select" class="profile-select">
+                        <option value="Default">Default</option>
+                    </select>
+                    <button id="btn-add-profile" class="btn-icon" title="新增配置"><i class="fa-solid fa-plus"></i></button>
+                    <button id="btn-delete-profile" class="btn-icon btn-danger" title="刪除配置"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            </div>
+
+            <!-- Action Area -->
+            <div class="action-section">
+                <button id="btn-apply" class="btn btn-apply">
+                    <i class="fa-solid fa-circle-check"></i> 應用當前配置
+                </button>
+                <button id="btn-play" class="btn btn-play">
+                    <i class="fa-solid fa-play"></i> 啟動殺戮尖塔2
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="tab-mods">
+                    <i class="fa-solid fa-cubes"></i> 模組列表
+                </button>
+                <button class="nav-item" data-tab="tab-settings">
+                    <i class="fa-solid fa-sliders"></i> 設定與路徑
+                </button>
+            </nav>
+
+            <!-- Stats/Footer -->
+            <div class="sidebar-footer">
+                <div class="stat-row">
+                    <span>已啟用模組</span>
+                    <span id="active-count" class="stat-val">0 / 0</span>
+                </div>
+                <div class="footer-note">Spire Dark V4.0 Manager</div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header Status Bar -->
+            <header class="content-header">
+                <div class="current-profile-info">
+                    當前載入配置：<span id="active-profile-name" class="highlight">Default</span>
+                </div>
+                <div id="game-status-bar" class="game-status-bar alert-warning">
+                    <i class="fa-solid fa-circle-info"></i> <span id="game-path-display">尚未設定遊戲路徑，請至「設定與路徑」填寫。</span>
+                </div>
+            </header>
+
+            <!-- TABS -->
+            <!-- 1. Mods Tab -->
+            <section id="tab-mods" class="tab-pane active">
+                <!-- Conflict Warning Bar -->
+                <div id="conflict-warning-bar" class="conflict-warning-bar" style="display: none;">
+                    <span id="conflict-warning-text"><i class="fa-solid fa-triangle-exclamation"></i> 偵測到模組衝突，請點擊查看詳情。</span>
+                    <button id="btn-show-conflicts" class="btn-link">查看詳情</button>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="search-input" placeholder="搜尋模組名稱、作者或描述...">
+                    </div>
+                    <div class="status-filter-container">
+                        <select id="status-filter" class="status-select">
+                            <option value="all">所有狀態</option>
+                            <option value="enabled">僅顯示已啟用</option>
+                            <option value="disabled">僅顯示未啟用</option>
+                        </select>
+                    </div>
+                    <div class="hide-local-container">
+                        <label class="hide-local-label">
+                            <input type="checkbox" id="hide-local-checkbox"> 隱藏原本模組
+                        </label>
+                    </div>
+                    <div class="category-filters" id="category-filters">
+                        <button class="filter-btn active" data-category="all">全部</button>
+                        <button class="filter-btn" data-category="必装前置">前置</button>
+                        <button class="filter-btn" data-category="功能类">功能</button>
+                        <button class="filter-btn" data-category="玩法扩展类">玩法</button>
+                        <button class="filter-btn" data-category="皮肤美化类">美化</button>
+                        <button class="filter-btn" data-category="角色扩展类">角色</button>
+                        <button class="filter-btn" data-category="原本模組">原本模組</button>
+                    </div>
+                </div>
+
+                <!-- Mods Grid -->
+                <div class="mods-grid-container">
+                    <div class="mods-grid" id="mods-grid">
+                        <!-- Card dynamic loading -->
+                        <div class="loading-state">
+                            <i class="fa-solid fa-circle-notch fa-spin"></i> 正在載入模組列表...
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Settings Tab -->
+            <section id="tab-settings" class="tab-pane">
+                <div class="settings-container">
+                    <h2><i class="fa-solid fa-sliders"></i> 系統路徑與設定</h2>
+                    <div class="setting-group">
+                        <h3><i class="fa-solid fa-folder-open"></i> 《殺戮尖塔 2》遊戲安裝資料夾</h3>
+                        <p class="setting-desc">請選擇您 Steam 中《Slay the Spire 2》的安裝資料夾（包含 SlayTheSpire2.exe 的目錄）。</p>
+                        <div class="path-input-row">
+                            <input type="text" id="input-game-path" placeholder="請輸入或貼上遊戲安裝路徑">
+                            <button id="btn-browse-path" class="btn btn-secondary"><i class="fa-solid fa-folder-open"></i> 選擇資料夾</button>
+                            <button id="btn-select-path" class="btn btn-secondary"><i class="fa-solid fa-wand-magic-sparkles"></i> 自動偵測路徑</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3><i class="fa-solid fa-circle-info"></i> 關於 Symlink / Junction 技術</h3>
+                        <p class="setting-desc">
+                            本管理器採用 Windows 原生的 Directory Junction 技術掛載模組。此方式**不佔用您的硬碟空間**（檔案仍保留在整合包目錄中），且在切換配置時能在毫秒內完成，完全不會損壞或污染您的原版遊戲資料夾。
+                        </p>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3><i class="fa-solid fa-cloud-arrow-down"></i> 軟體版本與自動更新</h3>
+                        <p class="setting-desc">檢查並更新您的 Spire Dark Mod Manager 客戶端程式。</p>
+                        <div class="path-input-row">
+                            <span style="font-size: 14px; margin-right: 15px; display: inline-flex; align-items: center; gap: 5px;">
+                                <i class="fa-solid fa-code-branch"></i> 當前版本：<strong id="label-current-version">v1.0.0</strong>
+                            </span>
+                            <button id="btn-check-update" class="btn btn-secondary"><i class="fa-solid fa-arrows-rotate"></i> 檢查更新</button>
+                            <span id="update-status-text" style="font-size: 13px; color: var(--text-muted); margin-left: 10px;"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Detail Drawer -->
+        <div class="detail-drawer" id="detail-drawer">
+            <button class="btn-close-drawer" id="btn-close-drawer"><i class="fa-solid fa-xmark"></i></button>
+            <div class="drawer-content">
+                <div class="drawer-header">
+                    <span class="drawer-badge" id="drawer-badge">角色擴展類</span>
+                    <h2 class="drawer-title" id="drawer-title">十六夜咲夜</h2>
+                </div>
+                
+                <div class="drawer-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">模組 ID</span>
+                        <span class="meta-val code" id="drawer-id">TH_Sakuya</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">版本</span>
+                        <span class="meta-val" id="drawer-version">1.8</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">作者</span>
+                        <span class="meta-val" id="drawer-author">Reddo</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">玩法影響</span>
+                        <span class="meta-val" id="drawer-gameplay">是</span>
+                    </div>
+                </div>
+
+                <div class="drawer-section">
+                    <div class="section-title">依賴模組</div>
+                    <div class="dependency-tags" id="drawer-dependencies">
+                        <!-- Dependencies -->
+                    </div>
+                </div>
+
+                <div class="drawer-section">
+                    <div class="section-title">模組介紹</div>
+                    <p class="drawer-desc" id="drawer-desc">
+                        增加了一個來自東方Project的新角色，十六夜咲夜。擁有107張角色卡牌，7件新事件、15件新遺物和5瓶新藥水。
+                    </p>
+                </div>
+                
+                <div class="drawer-actions">
+                    <button class="btn btn-drawer-toggle" id="btn-drawer-toggle">啟用此模組</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background Overlay -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Custom Prompt Modal -->
+        <div class="modal" id="profile-modal">
+            <div class="modal-content">
+                <h3>新增模組配置</h3>
+                <p>請輸入新配置檔的名稱：</p>
+                <input type="text" id="modal-profile-name" placeholder="例如: 東方角色套組">
+                <div class="modal-actions">
+                    <button id="modal-btn-cancel" class="btn btn-secondary">取消</button>
+                    <button id="modal-btn-confirm" class="btn btn-apply">建立</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Modal -->
+        <div class="modal" id="update-modal">
+            <div class="modal-content">
+                <h3><i class="fa-solid fa-cloud-arrow-down" style="color: #a78bfa;"></i> 偵測到新版本！</h3>
+                <p style="margin: 8px 0;">發現新的管理器版本：<span id="update-version-label" style="font-weight: bold; color: #a78bfa;">v1.1.0</span></p>
+                <div class="changelog-container" style="max-height: 180px; overflow-y: auto; margin: 12px 0; padding: 10px; background: rgba(0, 0, 0, 0.3); border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: left;">
+                    <h4 style="margin-top: 0; color: #94a3b8; font-size: 13px; font-weight: 500;">更新說明：</h4>
+                    <pre id="update-changelog-text" style="white-space: pre-wrap; font-family: inherit; font-size: 13px; margin: 0; line-height: 1.5; color: #e2e8f0;"></pre>
+                </div>
+                <div id="update-progress-container" style="display: none; margin: 12px 0; text-align: left;">
+                    <div style="font-size: 13px; margin-bottom: 5px; display: flex; justify-content: space-between;">
+                        <span id="update-progress-status" style="color: #94a3b8;">正在下載更新...</span>
+                        <span id="update-progress-percent" style="color: #e2e8f0; font-weight: bold;">0%</span>
+                    </div>
+                    <div style="height: 6px; background: rgba(0, 0, 0, 0.5); border-radius: 3px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <div id="update-progress-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #a78bfa, #38bdf8); transition: width 0.3s;"></div>
+                    </div>
+                </div>
+                <div class="modal-actions" id="update-modal-actions">
+                    <button id="update-btn-cancel" class="btn btn-secondary">暫時忽略</button>
+                    <button id="update-btn-confirm" class="btn btn-apply"><i class="fa-solid fa-download"></i> 立即更新</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conflict Details Modal -->
+        <div class="modal" id="conflict-modal">
+            <div class="modal-content">
+                <h3><i class="fa-solid fa-triangle-exclamation" style="color: var(--danger);"></i> 模組衝突與相依性報告</h3>
+                <p>偵測到以下模組載入問題，可能會造成遊戲崩潰或異常：</p>
+                <div class="conflict-list" id="conflict-list" style="max-height: 250px; overflow-y: auto; margin: 10px 0; padding: 10px; background: var(--bg-darker); border-radius: 8px; border: 1px solid var(--border-color);">
+                    <!-- Dynamic conflict items -->
+                </div>
+                <div class="modal-actions">
+                    <button id="conflict-btn-close" class="btn btn-secondary">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+    </div>
+    
+    <!-- Script -->
+    <script src="app.js"></script>
+</body>
+</html>

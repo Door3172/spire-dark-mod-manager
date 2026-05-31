@@ -1,0 +1,72 @@
+{
+  "manager": {
+    "version": "1.0.0",
+    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SpireDarkModManager.exe",
+    "changelog": "v1.0.0 首次發布！\n1. 支持五大類別模組安裝與啟用\n2. 原生 Windows Junction 掛載技術，毫秒級切換配置\n3. 全自動 Steam 遊戲安裝路徑偵測與配置管理\n4. 支持多套獨立模組配置存檔切換\n5. 內置模組相依性缺失與 ID 重複衝突檢測功能\n6. 支援自動在線檢查更新"
+  },
+  "mods": [
+    {
+      "id": "ModConfig",
+      "name": "皮皮配置: ModConfig",
+      "author": "皮一下就很凡@Bilibili",
+      "version": "0.2.3",
+      "category": "必裝前置",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ModConfig.zip",
+      "description": "通用模組配置框架。在遊戲設定頁嵌入「模組配置」標籤頁，其他模組通過 API 註冊配置項即可自動顯示。支持開關、滑條、下拉框、快捷鍵等控件。"
+    },
+    {
+      "id": "STS2-RitsuLib",
+      "name": "RitsuLib 基礎共用庫",
+      "author": "OLC",
+      "version": "0.3.0",
+      "category": "必裝前置",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RitsuLib.zip",
+      "description": "Slay the Spire 2 共用模組框架庫，提供重用性補丁、持久化、生命週期、本地化及工具 API，為多數進階模組運行的必要前提。"
+    },
+    {
+      "id": "DamageMeter",
+      "name": "皮皮統計: Skada 傷害計量表",
+      "author": "皮一下就很凡@Bilibili",
+      "version": "1.14.4",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/DamageMeter.zip",
+      "description": "誰盡力？誰犯罪？誰的打法不團隊？傷害、格擋、助攻、卡牌效率……17 種戰鬥統計全覆蓋，數據儀表盤一鍵複盤。開黑必裝。"
+    },
+    {
+      "id": "SpeedX",
+      "name": "皮皮極速: SpeedX 加速器",
+      "author": "皮一下就很凡@Bilibili",
+      "version": "0.11.7",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SpeedX.zip",
+      "description": "皮皮極速 — 最高 20 倍速！可跳過動畫與橫幅、自動結束回合、自動拾取、自動前進，按 F9 自定義一切快捷鍵。"
+    },
+    {
+      "id": "CardOverhaul",
+      "name": "卡牌大改造: Card Overhaul",
+      "author": "Bengal",
+      "version": "1.0.6",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/CardOverhaul.zip",
+      "description": "卡牌功能改造：為卡牌新增附魔槽、隨機前綴與字尾、無限制鍛造強化、卡牌全息卡面效果與稀有卡閃爍粒子特效。"
+    },
+    {
+      "id": "RosmontisSkinForRegent",
+      "name": "迷迭香-儲君皮膚美化 Mod",
+      "author": "傀儡師_lite",
+      "version": "v0.0.2",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RosmontisSkin.zip",
+      "description": "以《明日方舟》中的人氣角色「迷迭香」形象替換遊戲內「儲君」的 Spine 戰鬥模型與動作，包含多套可切換皮膚和特別語音包。"
+    },
+    {
+      "id": "TH_Sakuya",
+      "name": "角色擴展: 十六夜咲夜",
+      "author": "Reddo",
+      "version": "1.8",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TH_Sakuya.zip",
+      "description": "加入來自《東方 Project》的新角色：完美與瀟灑的從者「十六夜咲夜」。擁有獨立的 107 張卡牌、15 件新遺物和 5 瓶特製藥水。"
+    }
+  ]
+}
