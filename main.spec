@@ -12,6 +12,7 @@ a = Analysis(
     runtime_hooks=[],
     excludes=[],
     win_no_prefer_redirects=False,
+    win_private_assemblies=True,
     noarchive=False,
     optimize=0,
 )
