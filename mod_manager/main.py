@@ -662,153 +662,160 @@ def api_mods():
 @route('/api/apply', method=['POST', 'OPTIONS'])
 @enable_cors
 def api_apply():
-    config = load_config()
-    profile_name = request.json.get("profile")
-    
-    if not config["game_path"]:
-        return {"status": "error", "message": "請先設定《殺戮尖塔 2》遊戲路徑"}
-    
-    game_path = config["game_path"]
-    mods_dir = os.path.join(game_path, "mods")
-    disabled_dir = os.path.join(game_path, "mods_disabled")
-    
-    if not os.path.exists(mods_dir):
-        try:
-            os.makedirs(mods_dir)
-        except Exception as e:
-            return {"status": "error", "message": f"無法建立遊戲 mods 資料夾: {str(e)}"}
-            
-    if not os.path.exists(disabled_dir):
-        try:
-            os.makedirs(disabled_dir)
-        except Exception:
-            pass
-    
-    # 1. Clear existing symlinks / junctions ONLY (preserve real folders!)
-    for item in os.listdir(mods_dir):
-        item_path = os.path.join(mods_dir, item)
-        is_junction = False
-        try:
-            is_junction = bool(os.path.isdir(item_path) and (os.stat(item_path).st_file_attributes & 0x400))
-        except Exception:
-            pass
-            
-        if os.path.islink(item_path) or is_junction:
-            try:
-                os.rmdir(item_path)
-            except Exception:
-                try:
-                    os.remove(item_path)
-                except Exception as ex:
-                    print(f"Failed to remove link {item_path}: {ex}")
-
-    enabled_ids = config["profiles"].get(profile_name, [])
-    all_mods = json.loads(api_mods())
-    
-    success_count = 0
-    failed_mods = []
-    
-    for mod in all_mods:
-        if not mod.get("installed", True):
-            continue
-        is_enabled = mod["id"] in enabled_ids
-        folder_name = mod["folder_name"]
+    try:
+        config = load_config()
+        profile_name = request.json.get("profile")
         
-        # Handle original local game mods (moving between mods/ and mods_disabled/)
-        if mod.get("is_local_game_mod"):
-            if is_enabled:
-                src = os.path.join(disabled_dir, folder_name)
-                dst = os.path.join(mods_dir, folder_name)
-                if os.path.exists(src) and not os.path.exists(dst):
-                    try:
-                        shutil.move(src, dst)
-                        success_count += 1
-                    except Exception as e:
-                        failed_mods.append(f"{mod['name']} (移動失敗: {str(e)})")
-                elif os.path.exists(dst):
-                    success_count += 1
-            else:
-                src = os.path.join(mods_dir, folder_name)
-                dst = os.path.join(disabled_dir, folder_name)
-                if os.path.exists(src) and not os.path.exists(dst):
-                    try:
-                        shutil.move(src, dst)
-                    except Exception as e:
-                        print(f"Failed to move local mod to disabled: {e}")
-                        
-        # Handle compilation pack mods (creating junctions or moving physical folders if they exist)
-        else:
-            source_dir = mod["target_link_dir"]
-            link_name = os.path.basename(source_dir)
-            link_path = os.path.join(mods_dir, link_name)
-            disabled_path = os.path.join(disabled_dir, link_name)
-            
-            alt_link_path = os.path.join(mods_dir, folder_name)
-            alt_disabled_path = os.path.join(disabled_dir, folder_name)
-            
-            # Check junction status for both possible paths
-            is_junction = False
-            is_alt_junction = False
+        if not config["game_path"]:
+            return {"status": "error", "message": "請先設定《殺戮尖塔 2》遊戲路徑"}
+        
+        game_path = config["game_path"]
+        mods_dir = os.path.join(game_path, "mods")
+        disabled_dir = os.path.join(game_path, "mods_disabled")
+        
+        if not os.path.exists(mods_dir):
             try:
-                if os.path.exists(link_path):
-                    is_junction = bool(os.stat(link_path).st_file_attributes & 0x400) or os.path.islink(link_path)
-                if os.path.exists(alt_link_path):
-                    is_alt_junction = bool(os.stat(alt_link_path).st_file_attributes & 0x400) or os.path.islink(alt_link_path)
+                os.makedirs(mods_dir)
+            except Exception as e:
+                return {"status": "error", "message": f"無法建立遊戲 mods 資料夾: {str(e)}"}
+                
+        if not os.path.exists(disabled_dir):
+            try:
+                os.makedirs(disabled_dir)
+            except Exception:
+                pass
+        
+        # 1. Clear existing symlinks / junctions ONLY (preserve real folders!)
+        for item in os.listdir(mods_dir):
+            item_path = os.path.join(mods_dir, item)
+            is_junction = False
+            try:
+                is_junction = bool(os.path.isdir(item_path) and (os.stat(item_path).st_file_attributes & 0x400))
             except Exception:
                 pass
                 
-            if is_enabled:
-                # If there's a physical folder in disabled_dir (either alt or standard), move it to mods_dir
-                if os.path.exists(alt_disabled_path) and not os.path.exists(alt_link_path):
+            if os.path.islink(item_path) or is_junction:
+                try:
+                    os.rmdir(item_path)
+                except Exception:
                     try:
-                        shutil.move(alt_disabled_path, alt_link_path)
-                        success_count += 1
-                    except Exception as e:
-                        failed_mods.append(f"{mod['name']} (移動實體失敗: {str(e)})")
-                elif os.path.exists(disabled_path) and not os.path.exists(link_path):
-                    try:
-                        shutil.move(disabled_path, link_path)
-                        success_count += 1
-                    except Exception as e:
-                        failed_mods.append(f"{mod['name']} (移動實體失敗: {str(e)})")
-                # If it already exists in mods_dir (either standard or alt)
-                elif os.path.exists(link_path) or os.path.exists(alt_link_path):
-                    success_count += 1
-                # Otherwise, create a junction pointing to compilation pack directory
-                else:
-                    cmd = f'mklink /J "{os.path.abspath(link_path)}" "{os.path.abspath(source_dir)}"'
-                    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-                    if result.returncode == 0:
-                        success_count += 1
-                    else:
-                        failed_mods.append(mod["name"])
-            else:
-                # If disabled, and exists as physical folder (not junction) in mods_dir, move to disabled_dir
-                if os.path.exists(alt_link_path) and not is_alt_junction:
-                    if not os.path.exists(alt_disabled_path):
-                        try:
-                            shutil.move(alt_link_path, alt_disabled_path)
-                        except Exception as e:
-                            print(f"Failed to move physical compilation mod to disabled: {e}")
-                elif os.path.exists(link_path) and not is_junction:
-                    if not os.path.exists(disabled_path):
-                        try:
-                            shutil.move(link_path, disabled_path)
-                        except Exception as e:
-                            print(f"Failed to move physical compilation mod to disabled: {e}")
-                else:
-                    success_count += 1
+                        os.remove(item_path)
+                    except Exception as ex:
+                        print(f"Failed to remove link {item_path}: {ex}")
+
+        enabled_ids = config["profiles"].get(profile_name, [])
+        all_mods = json.loads(api_mods())
+        
+        success_count = 0
+        failed_mods = []
+        
+        for mod in all_mods:
+            if not mod.get("installed", True):
+                continue
+            is_enabled = mod["id"] in enabled_ids
+            folder_name = mod.get("folder_name", mod["id"])
             
-    config["active_profile"] = profile_name
-    save_config_to_file(config)
-    
-    if failed_mods:
-        return {
-            "status": "warning",
-            "message": f"設定完成，但有 {len(failed_mods)} 個模組連結或啟用失敗：{', '.join(failed_mods)}"
-        }
-    
-    return {"status": "success", "message": f"成功啟用配置「{profile_name}」，已載入 {success_count} 個模組。"}
+            # Handle original local game mods (moving between mods/ and mods_disabled/)
+            if mod.get("is_local_game_mod"):
+                if is_enabled:
+                    src = os.path.join(disabled_dir, folder_name)
+                    dst = os.path.join(mods_dir, folder_name)
+                    if os.path.exists(src) and not os.path.exists(dst):
+                        try:
+                            shutil.move(src, dst)
+                            success_count += 1
+                        except Exception as e:
+                            failed_mods.append(f"{mod['name']} (移動失敗: {str(e)})")
+                    elif os.path.exists(dst):
+                        success_count += 1
+                else:
+                    src = os.path.join(mods_dir, folder_name)
+                    dst = os.path.join(disabled_dir, folder_name)
+                    if os.path.exists(src) and not os.path.exists(dst):
+                        try:
+                            shutil.move(src, dst)
+                        except Exception as e:
+                            print(f"Failed to move local mod to disabled: {e}")
+                            
+            # Handle compilation pack mods (creating junctions or moving physical folders if they exist)
+            else:
+                source_dir = mod.get("target_link_dir")
+                if not source_dir:
+                    continue
+                link_name = os.path.basename(source_dir)
+                link_path = os.path.join(mods_dir, link_name)
+                disabled_path = os.path.join(disabled_dir, link_name)
+                
+                alt_link_path = os.path.join(mods_dir, folder_name)
+                alt_disabled_path = os.path.join(disabled_dir, folder_name)
+                
+                # Check junction status for both possible paths
+                is_junction = False
+                is_alt_junction = False
+                try:
+                    if os.path.exists(link_path):
+                        is_junction = bool(os.stat(link_path).st_file_attributes & 0x400) or os.path.islink(link_path)
+                    if os.path.exists(alt_link_path):
+                        is_alt_junction = bool(os.stat(alt_link_path).st_file_attributes & 0x400) or os.path.islink(alt_link_path)
+                except Exception:
+                    pass
+                    
+                if is_enabled:
+                    # If there's a physical folder in disabled_dir (either alt or standard), move it to mods_dir
+                    if os.path.exists(alt_disabled_path) and not os.path.exists(alt_link_path):
+                        try:
+                            shutil.move(alt_disabled_path, alt_link_path)
+                            success_count += 1
+                        except Exception as e:
+                            failed_mods.append(f"{mod['name']} (移動實體失敗: {str(e)})")
+                    elif os.path.exists(disabled_path) and not os.path.exists(link_path):
+                        try:
+                            shutil.move(disabled_path, link_path)
+                            success_count += 1
+                        except Exception as e:
+                            failed_mods.append(f"{mod['name']} (移動實體失敗: {str(e)})")
+                    # If it already exists in mods_dir (either standard or alt)
+                    elif os.path.exists(link_path) or os.path.exists(alt_link_path):
+                        success_count += 1
+                    # Otherwise, create a junction pointing to compilation pack directory
+                    else:
+                        cmd = f'mklink /J "{os.path.abspath(link_path)}" "{os.path.abspath(source_dir)}"'
+                        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+                        if result.returncode == 0:
+                            success_count += 1
+                        else:
+                            failed_mods.append(mod["name"])
+                else:
+                    # If disabled, and exists as physical folder (not junction) in mods_dir, move to disabled_dir
+                    if os.path.exists(alt_link_path) and not is_alt_junction:
+                        if not os.path.exists(alt_disabled_path):
+                            try:
+                                shutil.move(alt_link_path, alt_disabled_path)
+                            except Exception as e:
+                                print(f"Failed to move physical compilation mod to disabled: {e}")
+                    elif os.path.exists(link_path) and not is_junction:
+                        if not os.path.exists(disabled_path):
+                            try:
+                                shutil.move(link_path, disabled_path)
+                            except Exception as e:
+                                print(f"Failed to move physical compilation mod to disabled: {e}")
+                    else:
+                        success_count += 1
+                
+        config["active_profile"] = profile_name
+        save_config_to_file(config)
+        
+        if failed_mods:
+            return {
+                "status": "warning",
+                "message": f"設定完成，但有 {len(failed_mods)} 個模組連結或啟用失敗：{', '.join(failed_mods)}"
+            }
+        
+        return {"status": "success", "message": f"成功啟用配置「{profile_name}」，已載入 {success_count} 個模組。"}
+    except Exception as e:
+        import traceback
+        tb = traceback.format_exc()
+        return {"status": "error", "message": f"應用當前配置時發生異常錯誤: {str(e)}\n\nTraceback:\n{tb}"}
 
 @route('/api/profile/add', method=['POST', 'OPTIONS'])
 @enable_cors
@@ -932,8 +939,8 @@ del "%~f0"
             
         # Spawn batch script and terminate python process
         subprocess.Popen(f'"{bat_path}"', shell=True)
-        webview.active_window().destroy()
-        sys.exit(0)
+        import os
+        os._exit(0)
         
     except Exception as e:
         if os.path.exists(temp_new_exe):
