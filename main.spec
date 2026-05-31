@@ -14,7 +14,6 @@ a = Analysis(
     win_no_prefer_redirects=False,
     win_private_assemblies=True,
     noarchive=False,
-    optimize=0,
 )
 pyz = PYZ(a.pure)
 
