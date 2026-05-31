@@ -818,7 +818,7 @@ def api_launch():
 
 # --- Auto-Update System ---
 CURRENT_VERSION = "1.0.0"
-MANIFEST_URL = "https://raw.githubusercontent.com/Door3172/spire-dark-mod-manager/main/web_portal/public/manifest.json"
+MANIFEST_URL = "https://spire-dark-mod-manager.vercel.app/manifest.json"
 
 def compare_versions(v1, v2):
     def parse(v):
