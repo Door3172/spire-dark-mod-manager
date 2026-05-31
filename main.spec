@@ -1,11 +1,20 @@
 # -*- mode: python ; coding: utf-8 -*-
+import os
+import webview
 
+webview_dir = os.path.dirname(webview.__file__)
+webview_lib = os.path.join(webview_dir, 'lib')
+webview_js = os.path.join(webview_dir, 'js')
 
 a = Analysis(
     ['mod_manager\\main.py'],
     pathex=[],
     binaries=[],
-    datas=[('mod_manager/gui', 'gui')],
+    datas=[
+        ('mod_manager/gui', 'gui'),
+        (webview_lib, 'webview/lib'),
+        (webview_js, 'webview/js'),
+    ],
     hiddenimports=['_cffi_backend', 'clr'],
     hookspath=[],
     hooksconfig={},
