@@ -21,14 +21,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.10.6'
 
-      - name: Install dependencies
+      - name: Install dependencies and Build
         run: |
+          python -m venv venv
+          .\venv\Scripts\activate
           pip install bottle pywebview pyinstaller
-
-      - name: Build with PyInstaller
-        run: |
           pyinstaller main.spec
 
       - name: Rename executable
