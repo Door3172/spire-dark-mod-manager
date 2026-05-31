@@ -3,7 +3,7 @@
     "version": "1.0.1",
     "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.1/SpireDarkModManager.exe",
     "changelog": [
-      "ci: match python version to 3.10.6 and use venv for build",
+      "ci: add _cffi_backend and clr to hiddenimports in main.spec",
       ""
     ]
   },
