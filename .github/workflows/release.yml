@@ -1,0 +1,78 @@
+name: Build and Release Mod Manager
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install bottle pywebview pyinstaller
+
+      - name: Build with PyInstaller
+        run: |
+          pyinstaller main.spec
+
+      - name: Rename executable
+        run: |
+          mv dist/main.exe dist/SpireDarkModManager.exe
+
+      - name: Update manifest.json version and URL
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $version = $tag.TrimStart('v')
+          $manifestPath = "web_portal/public/manifest.json"
+          
+          # Read and parse JSON
+          $json = Get-Content $manifestPath -Raw | ConvertFrom-Json
+          
+          # Update fields
+          $json.manager.version = $version
+          $json.manager.download_url = "https://github.com/${{ github.repository }}/releases/download/$tag/SpireDarkModManager.exe"
+          
+          # Get the latest commit message for changelog
+          $commitMsg = git log -1 --pretty=%B
+          $json.manager.changelog = $commitMsg.Trim()
+          
+          # Write back JSON
+          $json | ConvertTo-Json -Depth 10 | Set-Content $manifestPath
+          
+          # Configure Git and push changes back to main branch
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add $manifestPath
+          git commit -m "chore: auto-update manifest.json to $tag [skip ci]"
+          git push origin main
+
+      - name: Create GitHub Release and Upload Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/SpireDarkModManager.exe
+          tag_name: ${{ github.ref_name }}
+          name: Spire Dark Mod Manager ${{ github.ref_name }}
+          body: |
+            ## Spire Dark Mod Manager ${{ github.ref_name }} 發布
+            自動建置與封裝完成。詳細更新日誌請參照最新提交資訊。
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
