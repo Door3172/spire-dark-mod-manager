@@ -1105,3 +1105,22 @@ input:checked + .slider:before {
     color: var(--text-muted);
 }
 
+.btn-delete {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-delete:hover {
+    color: #ff4d4d;
+    background-color: rgba(255, 77, 77, 0.15);
+    transform: scale(1.05);
+}

@@ -982,6 +982,45 @@ def api_install_mod():
     except Exception as e:
         return {"status": "error", "message": f"安裝過程中發生錯誤: {str(e)}"}
 
+@route('/api/delete_mod', method=['POST', 'OPTIONS'])
+@enable_cors
+def api_delete_mod():
+    import shutil
+    config = load_config()
+    mod_id = request.json.get("id")
+    target_dir = request.json.get("target_link_dir")
+    
+    if not target_dir or not os.path.exists(target_dir):
+        return {"status": "error", "message": "找不到該模組的本地路徑"}
+        
+    try:
+        target_dir = os.path.abspath(target_dir)
+        
+        # Check if it is a junction or symlink to avoid deleting actual files recursively
+        is_junction = False
+        try:
+            is_junction = bool(os.path.isdir(target_dir) and (os.stat(target_dir).st_file_attributes & 0x400))
+        except Exception:
+            pass
+            
+        if os.path.islink(target_dir) or is_junction:
+            try: os.rmdir(target_dir)
+            except: os.remove(target_dir)
+        else:
+            shutil.rmtree(target_dir)
+            
+        modified = False
+        for p_name in config.get("profiles", {}):
+            if mod_id in config["profiles"][p_name]:
+                config["profiles"][p_name].remove(mod_id)
+                modified = True
+        if modified:
+            save_config_to_file(config)
+            
+        return {"status": "success", "message": "模組刪除成功"}
+    except Exception as e:
+        return {"status": "error", "message": f"刪除模組失敗: {str(e)}"}
+
 if __name__ == "__main__":
     PORT = 18690
     print(f"Starting server on http://127.0.0.1:{PORT} ...")

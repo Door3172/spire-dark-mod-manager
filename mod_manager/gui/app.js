@@ -245,11 +245,17 @@ function renderModsGrid() {
 
         let footerContent = "";
         if (isInstalled) {
+            const targetLinkDir = mod.target_link_dir ? mod.target_link_dir.replace(/\\/g, '/') : "";
             footerContent = `
-                <label class="switch" onclick="event.stopPropagation();">
-                    <input type="checkbox" class="mod-toggle" data-id="${mod.id}" ${isEnabled ? 'checked' : ''}>
-                    <span class="slider"></span>
-                </label>
+                <div class="card-actions" style="display: flex; align-items: center; gap: 8px;">
+                    <button class="btn-delete" title="刪除此模組" onclick="event.stopPropagation(); window.confirmDeleteMod('${mod.id}', '${mod.name}', '${targetLinkDir}')">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                    <label class="switch" onclick="event.stopPropagation();">
+                        <input type="checkbox" class="mod-toggle" data-id="${mod.id}" ${isEnabled ? 'checked' : ''}>
+                        <span class="slider"></span>
+                    </label>
+                </div>
             `;
         } else {
             footerContent = `
@@ -319,6 +325,33 @@ function renderModsGrid() {
     // Auto detect conflicts
     detectConflicts();
 }
+
+window.confirmDeleteMod = async function(id, name, targetLinkDir) {
+    if (!targetLinkDir) {
+        alert("無法獲取此模組的本地路徑，無法刪除。");
+        return;
+    }
+    if (!confirm(`確定要永久刪除模組「${name}」嗎？\n這將會刪除其本地檔案。`)) {
+        return;
+    }
+    
+    try {
+        const res = await fetch('/api/delete_mod', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: id, target_link_dir: targetLinkDir })
+        });
+        const data = await res.json();
+        if (data.status === "success") {
+            alert("刪除成功！");
+            await loadModsAsync();
+        } else {
+            alert("刪除失敗：" + data.message);
+        }
+    } catch (e) {
+        alert("刪除過程中發生網路異常錯誤：" + e);
+    }
+};
 
 // Detect conflicts and dependencies warnings
 function detectConflicts() {
