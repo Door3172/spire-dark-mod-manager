@@ -3,7 +3,7 @@
     "version": "1.0.1",
     "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.1/SpireDarkModManager.exe",
     "changelog": [
-      "ci: add _cffi_backend and clr to hiddenimports in main.spec",
+      "fix: resolve PyInstaller 6.x build and compatibility issues on CI",
       ""
     ]
   },
