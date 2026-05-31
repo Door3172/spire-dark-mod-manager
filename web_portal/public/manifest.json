@@ -1,9 +1,9 @@
 {
   "manager": {
-    "version": "1.0.3",
-    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.3/SpireDarkModManager.exe",
+    "version": "1.0.4",
+    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.4/SpireDarkModManager.exe",
     "changelog": [
-      "fix: remove optimize=0 argument for PyInstaller 5.x compatibility",
+      "Merge branch 'main' of https://github.com/Door3172/spire-dark-mod-manager",
       ""
     ]
   },
