@@ -709,6 +709,8 @@ def api_apply():
     failed_mods = []
     
     for mod in all_mods:
+        if not mod.get("installed", True):
+            continue
         is_enabled = mod["id"] in enabled_ids
         folder_name = mod["folder_name"]
         
