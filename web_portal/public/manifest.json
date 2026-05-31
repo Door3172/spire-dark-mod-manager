@@ -12,61 +12,1447 @@
       "version": "0.2.3",
       "category": "必裝前置",
       "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ModConfig.zip",
-      "description": "通用模組配置框架。在遊戲設定頁嵌入「模組配置」標籤頁，其他模組通過 API 註冊配置項即可自動顯示。支持開關、滑條、下拉框、快捷鍵等控件。"
+      "description": "通用模组配置框架 \\"
     },
     {
-      "id": "STS2-RitsuLib",
-      "name": "RitsuLib 基礎共用庫",
+      "id": "CustomMenu",
+      "name": "CustomMenu",
+      "author": "桐生飞羽左",
+      "version": "0.1.0",
+      "category": "必裝前置",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/CustomMenu.zip",
+      "description": "A mod that replaces main menu scene and music"
+    },
+    {
+      "id": "card_art_editor",
+      "name": "Card Art Editor",
+      "author": "ysg05",
+      "version": "0.1.0",
+      "category": "必裝前置",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/card_art_editor.zip",
+      "description": "Adds a card art editor button to the card inspection screen. Supports local image and GIF upload, adjustable cropping, and shareable art pack import/export."
+    },
+    {
+      "id": "STS2 0.103.2 compat",
+      "name": "RitsuLib",
       "author": "OLC",
       "version": "0.3.0",
       "category": "必裝前置",
-      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RitsuLib.zip",
-      "description": "Slay the Spire 2 共用模組框架庫，提供重用性補丁、持久化、生命週期、本地化及工具 API，為多數進階模組運行的必要前提。"
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/STS2 0.103.2 compat.zip",
+      "description": "A shared Slay the Spire 2 mod framework library providing reusable patching, persistence, lifecycle, localization, and utility APIs for other mods."
+    },
+    {
+      "id": "BaseLib",
+      "name": "BaseLib",
+      "author": "Alchyr",
+      "version": "v3.1.3",
+      "category": "必裝前置",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/BaseLib.zip",
+      "description": "Modding utility for Slay the Spire 2"
+    },
+    {
+      "id": "Patchoulib",
+      "name": "帕秋莉库",
+      "author": "Reddo",
+      "version": "1.4",
+      "category": "必裝前置",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Patchoulib.zip",
+      "description": "个人工具库，集成了一些常用Patch防止撞车。"
+    },
+    {
+      "id": "Sts2SkinManager",
+      "name": "STS2 Skin Manager",
+      "author": "inggom",
+      "version": "0.12.1",
+      "category": "必裝前置",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Sts2SkinManager.zip",
+      "description": "Manage character skin, card skin, and mixed (spine + extras) mods from one in-game panel on the Character Select screen. Hover to preview, rename inline, toggle, and layer with priority. The whole UI is wrapped in a collapsible Skin Manager toggle so it stays out of the way until you need it."
+    },
+    {
+      "id": "Ascenders Sandbox",
+      "name": "Ascender's Sandbox",
+      "author": "Juls88",
+      "version": "v1.1.1",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Ascenders Sandbox.zip",
+      "description": "Take full control of your run with the Ascender's Sandbox'. This mod adds a dedicated \"Sandbox\" tab directly into your in-game settings, allowing you to toggle god mode, multiply your gold, or adjust your starting stats on the fly."
+    },
+    {
+      "id": "sts2_god_mod",
+      "name": "STS2 God Mod",
+      "author": "Jason Song",
+      "version": "1.7.1-beta",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/sts2_god_mod.zip",
+      "description": "God Mod is a utility and cheat-style mod for Slay the Spire 2 designed for testing, sandbox play, and faster run setup. It lets you quickly change game state, test builds, and skip repetitive preparation. God Mod 是一个面向 Slay the Spire 2 的工具型 / 作弊型模组，主要用于测试、沙盒玩法和快速起局。它让你可以快速修改游戏状态、测试构筑，并跳过重复性的准备流程。"
     },
     {
       "id": "DamageMeter",
-      "name": "皮皮統計: Skada 傷害計量表",
+      "name": "皮皮统计: Skada",
       "author": "皮一下就很凡@Bilibili",
       "version": "1.14.4",
       "category": "功能類",
       "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/DamageMeter.zip",
-      "description": "誰盡力？誰犯罪？誰的打法不團隊？傷害、格擋、助攻、卡牌效率……17 種戰鬥統計全覆蓋，數據儀表盤一鍵複盤。開黑必裝。"
+      "description": "谁尽力?谁犯罪?谁的打法不团队?伤害、格挡、助攻、卡牌效率……17种战斗统计全覆盖，数据仪表盘一键复盘。开黑必装，全平台通用。 Who carried? Who slacked? 17 combat stat categories, dashboard, co-op ready. Cross-platform."
+    },
+    {
+      "id": "Rewind",
+      "name": "皮皮倒带: Rewind",
+      "author": "皮一下就很凡@Bilibili",
+      "version": "0.26.10",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Rewind.zip",
+      "description": "皮皮倒带 — 公平撤回，不是作弊。回合倒带、房间检查点回退、公平模式、NoUndo勋章、种子查看。 \\"
+    },
+    {
+      "id": "FullPoolRewards",
+      "name": "Full Pool Rewards",
+      "author": "benja + Codex",
+      "version": "1.0.3",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/FullPoolRewards.zip",
+      "description": "Replaces random card rewards with the current character's full card pool."
+    },
+    {
+      "id": "SixEnergyStart",
+      "name": "Six Energy Start",
+      "author": "benja + Codex",
+      "version": "1.0.1",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SixEnergyStart.zip",
+      "description": "Forces every character to start runs with 6 energy instead of 3."
+    },
+    {
+      "id": "sl-random",
+      "name": "SL Random",
+      "author": "ByQsA",
+      "version": "1.0.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/sl-random.zip",
+      "description": "Updates random seed when loading a saved game"
     },
     {
       "id": "SpeedX",
-      "name": "皮皮極速: SpeedX 加速器",
+      "name": "皮皮极速: SpeedX",
       "author": "皮一下就很凡@Bilibili",
       "version": "0.11.7",
       "category": "功能類",
       "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SpeedX.zip",
-      "description": "皮皮極速 — 最高 20 倍速！可跳過動畫與橫幅、自動結束回合、自動拾取、自動前進，按 F9 自定義一切快捷鍵。"
+      "description": "皮皮极速 — 最高20倍速！跳过动画/横幅、自动结束回合、自动拾取、自动前进，按F9自定义一切。 \\"
+    },
+    {
+      "id": "card_editor",
+      "name": "Card Editor",
+      "author": "Renovice",
+      "version": "5.4",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/card_editor.zip",
+      "description": "In-game card editor + compendium-style browser. Edit costs, keywords, numbers, enchantments/afflictions, and add extra effects. Includes presets to save/load profiles."
+    },
+    {
+      "id": "Sts2CardAdvisor",
+      "name": "StS2 Card Advisor",
+      "author": "inggom",
+      "version": "v1.13.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Sts2CardAdvisor.zip",
+      "description": "카드 보상 선택 화면에서 덱 시너지를 기반으로 추천 점수/등급을 표시합니다."
+    },
+    {
+      "id": "sts2decktracker",
+      "name": "Slay the Spire 2 Deck Tracker",
+      "author": "999dulgi",
+      "version": "1.2.1",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/sts2decktracker.zip",
+      "description": "A deck tracker mod for Slay the Spire 2."
+    },
+    {
+      "id": "RandomVision",
+      "name": "RandomVision",
+      "author": "未知",
+      "version": "0.2.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RandomVision.zip",
+      "description": "Transparent previews for deterministic event outcomes and Crystal Sphere."
+    },
+    {
+      "id": "PowersPersist",
+      "name": "Powers Persist",
+      "author": "Peyton Nowlin",
+      "version": "v0.1.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/PowersPersist.zip",
+      "description": "Buffs and debuffs persist on the player across combats. Resets on save-and-quit. Optional toggles: remove power cards from the deck on play, skip persisting debuff-type powers, and skip persisting powers gained outside of combat (events)."
+    },
+    {
+      "id": "QuickLink",
+      "name": "皮皮快连: QuickLink",
+      "author": "皮一下就很凡@Bilibili",
+      "version": "0.9.8",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/QuickLink.zip",
+      "description": "皮皮快连：Steam联机快速回退。房主一键回到历史节点，队友自动回房、自动准备。 \\"
+    },
+    {
+      "id": "STS2-ShowPlayerHandCards",
+      "name": "Show Player Hand Cards",
+      "author": "OLC",
+      "version": "0.6.2",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/STS2-ShowPlayerHandCards.zip",
+      "description": "Show teammate hand cards next to the multiplayer player list in real-time, with hover to view full card details"
+    },
+    {
+      "id": "STS2LootRewards",
+      "name": "STS2LootRewards",
+      "author": "RxL",
+      "version": "1.0.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/STS2LootRewards.zip",
+      "description": "Adds Potion, Relic, and Gold reward buttons to the pause menu."
+    },
+    {
+      "id": "STS2CardsMod",
+      "name": "STS2CardsMod",
+      "author": "DidntKnew",
+      "version": "1.0.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/STS2CardsMod.zip",
+      "description": "Adds Add, Remove, and Upgrade card buttons directly to the pause menu."
+    },
+    {
+      "id": "Sts2UndoMod",
+      "name": "StS2 Undo",
+      "author": "inggom",
+      "version": "v0.0.11-beta",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Sts2UndoMod.zip",
+      "description": "전투 진입 시점부터 종료 전까지 카드 한 장 / 한 턴 단위로 되돌릴 수 있게 합니다. 사망 후에는 되돌릴 수 없습니다."
+    },
+    {
+      "id": "STS2CombatLogMod",
+      "name": "Combat Log",
+      "author": "Thebuda4",
+      "version": "1.5.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/STS2CombatLogMod.zip",
+      "description": "Logs detailed combat actions and run statistics. In-game combat log with hoverable special text."
+    },
+    {
+      "id": "STS2Advisor",
+      "name": "STS2 Advisor",
+      "author": "gundam11",
+      "version": "1.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/STS2Advisor.zip",
+      "description": "战斗顾问mod"
+    },
+    {
+      "id": "SlayWithController",
+      "name": "SlayWithController",
+      "author": "Caelus",
+      "version": "1.3.4",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SlayWithController.zip",
+      "description": "A Slay the Spire 2 mod focused on improving controller support and quality of life for controller players."
+    },
+    {
+      "id": "RemoveMultiplayerPlayerLimit",
+      "name": "RemoveMultiplayerPlayerLimit",
+      "author": "Rain_G",
+      "version": "0.1.7",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RemoveMultiplayerPlayerLimit.zip",
+      "description": "Raise multiplayer player cap from 4 to 16. Harmony-free rewrite with Steamworks.NET."
+    },
+    {
+      "id": "rescue",
+      "name": "救援队友",
+      "author": "TongsKing",
+      "version": "1.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/rescue.zip",
+      "description": "可以攻击队友尸体救援队友"
+    },
+    {
+      "id": "AutoCalculate",
+      "name": "AutoCalculate",
+      "author": "KaZaRI",
+      "version": "v0.0.1",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/AutoCalculate.zip",
+      "description": "Shows incoming enemy damage, player block, and final damage during combat."
+    },
+    {
+      "id": "MoreCardRewards",
+      "name": "MoreCardRewards",
+      "author": "Emo Used HM01",
+      "version": "v1.5.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/MoreCardRewards.zip",
+      "description": "Increases card reward choices from 3 to 5."
+    },
+    {
+      "id": "MoreSaves",
+      "name": "MoreSaves",
+      "author": "Hypersycos",
+      "version": "0.1.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/MoreSaves.zip",
+      "description": "無詳細描述。"
+    },
+    {
+      "id": "sts2_map_mod",
+      "name": "Map Enhance Mod",
+      "author": "Jason Song",
+      "version": "0.8.1",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/sts2_map_mod.zip",
+      "description": "地图增强模组 \\"
+    },
+    {
+      "id": "BetterSpire2",
+      "name": "BetterSpire2",
+      "author": "jdr",
+      "version": "v1.82.3",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/BetterSpire2.zip",
+      "description": "QoL mod: incoming damage totals, multi-hit labels, hand viewer, hold-R restart, skip splash, multiplayer kick/scaling"
+    },
+    {
+      "id": "UpgradeAllCards",
+      "name": "Upgrade All Cards",
+      "author": "JiesiLuo",
+      "version": "1.0.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/UpgradeAllCards.zip",
+      "description": "Automatically upgrades all starting cards and any new cards added to your deck during a run."
+    },
+    {
+      "id": "RunCardBanisher",
+      "name": "本局卡牌放逐",
+      "author": "ryuki",
+      "version": "v0.2",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RunCardBanisher.zip",
+      "description": "开局选择卡牌并将其从本局游戏中彻底移出，之后不能以抽牌、奖励、商店、转化或其他常见生成方式再次获得。"
+    },
+    {
+      "id": "BlockMod",
+      "name": "Block Mod",
+      "author": "Peyton Nowlin",
+      "version": "1.0.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/BlockMod.zip",
+      "description": "The player's block is never lost at the start of a turn (innate Barricade for every character). Enemies are unaffected."
+    },
+    {
+      "id": "ModSyncChecker",
+      "name": "MOD Sync Checker / 模组同步检测器",
+      "author": "K2 & Xiatingfeng",
+      "version": "2.3.7",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ModSyncChecker.zip",
+      "description": "Compare your mod list with teammates before co-op. Supports exporting/importing MOD profiles to quickly sync with friends.  与队友联机前快速对比 MOD 列表，支持导出/导入 MOD 配置文件，方便与好友同步模组。"
+    },
+    {
+      "id": "FlexibleRelics",
+      "name": "FlexibleRelics",
+      "author": "DeathPoker",
+      "version": "v1.0.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/FlexibleRelics.zip",
+      "description": "Add, remove, or swap relics mid-run via an in-game manager UI."
+    },
+    {
+      "id": "PlayerColors",
+      "name": "PlayerColors",
+      "author": "Masaicker",
+      "version": "v1.0.5",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/PlayerColors.zip",
+      "description": "Distinguish players by color when sharing the same character in multiplayer.  多人模式下使用相同角色时，通过颜色区分玩家。"
+    },
+    {
+      "id": "sts2-oracle-mod",
+      "name": "STS2 Oracle",
+      "author": "oracle",
+      "version": "1.0.1",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/sts2-oracle-mod.zip",
+      "description": "Strategic advisor — highlights recommended map routes with ranked overlays."
+    },
+    {
+      "id": "RemoveFromDeck",
+      "name": "RemoveFromDeck",
+      "author": "Masaicker",
+      "version": "v1.0.2",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RemoveFromDeck.zip",
+      "description": "Press Delete to remove cards from deck. 按Delete键删除牌组卡牌。"
+    },
+    {
+      "id": "Sts2PotionDropChance",
+      "name": "StS2 Potion Drop Chance",
+      "author": "inggom",
+      "version": "v0.5.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Sts2PotionDropChance.zip",
+      "description": "맵 화면에서 일반/엘리트/Unknown 노드 옆에 포션 드롭 확률을 배지로 표시. 본인 클라이언트에만 표시되며 다른 플레이어/게임 상태에 영향 없음 (read-only)."
+    },
+    {
+      "id": "UnlockAllMod",
+      "name": "Unlock All",
+      "author": "local-dev",
+      "version": "0.1.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/UnlockAllMod.zip",
+      "description": "Unlocks all characters, timeline epochs, cards, relics, potions, events and ascensions."
+    },
+    {
+      "id": "TrainingArea",
+      "name": "Training Area",
+      "author": "Ling Samuel",
+      "version": "v1.1.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TrainingArea.zip",
+      "description": "Training Area for Slay the Spire 2"
+    },
+    {
+      "id": "GoldGift",
+      "name": "Gold Gift",
+      "author": "saika0721",
+      "version": "1.0.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/GoldGift.zip",
+      "description": "联机时向队友赠送金币。点击队友头像打开详情面板，点 Gift Gold 按钮，输入金额即可赠送，双方金币实时同步。"
+    },
+    {
+      "id": "-",
+      "name": "Gold Gift",
+      "author": "saika0721",
+      "version": "1.0.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/-.zip",
+      "description": "联机时向队友赠送金币。点击队友头像打开详情面板，点 Gift Gold 按钮，输入金额即可赠送，双方金币实时同步。"
+    },
+    {
+      "id": "codex.skip_vakuu",
+      "name": "Skip Vakuu Boon",
+      "author": "Local",
+      "version": "0.1.0",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/codex.skip_vakuu.zip",
+      "description": "Adds a permanent skip option to Ancient Vakuu's boons, allowing you to skip without receiving any relic."
+    },
+    {
+      "id": "RunCardPlanner",
+      "name": "本局选牌规划",
+      "author": "ryuki",
+      "version": "v0.1-phase1",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RunCardPlanner.zip",
+      "description": "浏览全部卡牌、维护目标卡清单，并支持保存与应用预设。"
+    },
+    {
+      "id": "RelicRarityDisplay",
+      "name": "Relic Rarity Display",
+      "author": "Aiadan",
+      "version": "1.1",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RelicRarityDisplay.zip",
+      "description": "Colors relics based on their rarity."
+    },
+    {
+      "id": "PotionRarityDisplay",
+      "name": "Potion Rarity Display",
+      "author": "Aiadan",
+      "version": "1.1",
+      "category": "功能類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/PotionRarityDisplay.zip",
+      "description": "Colors potions based on their rarity."
+    },
+    {
+      "id": "sts2AITeammate",
+      "name": "sts2AITeammate",
+      "author": "Sally",
+      "version": "1.0.2",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/sts2AITeammate.zip",
+      "description": "AI Teammate is an experimental Slay the Spire 2 mod that adds AI-controlled teammates to a local fake-multiplayer run."
+    },
+    {
+      "id": "OldenSouls",
+      "name": "古老灵魂",
+      "author": "leddele",
+      "version": "1.0.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/OldenSouls.zip",
+      "description": "来自旧作?的先古之民们。需要 BaseLib 支持。"
+    },
+    {
+      "id": "Guise",
+      "name": "Guise",
+      "author": "Tbonex28b",
+      "version": "v1.05",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Guise.zip",
+      "description": "Play as your favorite monsters. 16 unique skins across all 5 characters, each with their own animations, sound effects, and passive abilities. Select your skin on the character select screen."
+    },
+    {
+      "id": "ProRegent",
+      "name": "更强的储君",
+      "author": "硬币落地无声",
+      "version": "1.2.1",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ProRegent.zip",
+      "description": "加强储君强度的mod，增加了储君的铸剑与星辉的联动性，使其在游戏中更具乐趣。"
+    },
+    {
+      "id": "SnakeKing",
+      "name": "SnakeKing",
+      "author": "Author",
+      "version": "v0.0.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SnakeKing.zip",
+      "description": "Slay the Spire 2 character mod created from a template for use with BaseLib"
+    },
+    {
+      "id": "TimeEaterTest",
+      "name": "TimeEaterTest",
+      "author": "Juzimao",
+      "version": "v0.0.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TimeEaterTest.zip",
+      "description": "Slay the Spire 2 character mod created from a template for use with BaseLib"
+    },
+    {
+      "id": "BasicMod",
+      "name": "Sell mod",
+      "author": "Kaiz",
+      "version": "v0.0.19",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/BasicMod.zip",
+      "description": "Sell mod - created from a Alchyr/ModTemplate-StS2 for use with BaseLib"
+    },
+    {
+      "id": "SpeechTheSpire",
+      "name": "SpeechTheSpire",
+      "author": "ClockCycas",
+      "version": "v0.3.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SpeechTheSpire.zip",
+      "description": "出牌与休息点选项时显示角色气泡；休息点台词在 PCK 的 localization/*/rest_site_speech.json（表 rest_site_speech）可改；故障机器人十六进制、储君叹号等规则不变。"
+    },
+    {
+      "id": "SoloMultiplayer",
+      "name": "Solo Multiplayer",
+      "author": "Dx",
+      "version": "v0.1.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SoloMultiplayer.zip",
+      "description": "Adds a local solo-controlled multiplayer standard run mode with 2-4 characters."
+    },
+    {
+      "id": "TripleCard",
+      "name": "Triple Reward",
+      "author": "Doneyqy123456",
+      "version": "v0.2.4",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TripleCard.zip",
+      "description": "When your deck gains three matching eligible cards, all three are consumed into one Replay 1 copy. The fused card is upgraded only if all three consumed copies were upgraded. A card reward from the next higher rarity is granted; if already highest rarity, a highest-rarity reward is granted instead."
     },
     {
       "id": "CardOverhaul",
-      "name": "卡牌大改造: Card Overhaul",
+      "name": "Card Overhaul",
       "author": "Bengal",
       "version": "1.0.6",
       "category": "玩法擴展類",
       "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/CardOverhaul.zip",
-      "description": "卡牌功能改造：為卡牌新增附魔槽、隨機前綴與字尾、無限制鍛造強化、卡牌全息卡面效果與稀有卡閃爍粒子特效。"
+      "description": "Complete card overhaul: Added enchantments slots, Prefix and Suffixes for cards, infinite smithing upgrades, Card Holographic effects, and rare-card sparkles."
+    },
+    {
+      "id": "EarlyDoom",
+      "name": "Early Doom",
+      "author": "Pretense",
+      "version": "1.0.3",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/EarlyDoom.zip",
+      "description": "Triggers Doom at the end of your turn instead of the end of the enemies turn."
+    },
+    {
+      "id": "BetterSovereignBlade",
+      "name": "BetterSovereignBlade",
+      "author": "SparkUiX",
+      "version": "0.0.2",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/BetterSovereignBlade.zip",
+      "description": "更改了君王之剑的动画效果"
+    },
+    {
+      "id": "RelicPlusMod",
+      "name": "RelicPlusMod / 遗物升级模组",
+      "author": "AXjun2333",
+      "version": "v0.0.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RelicPlusMod.zip",
+      "description": "Relic upgrade mod for Slay the Spire 2 / 《Slay the Spire 2》遗物升级模组。Requires BaseLib. Supports in-game configurable upgrade rates when ModConfig is installed."
+    },
+    {
+      "id": "ShopTheftMod",
+      "name": "ShopTheftMod",
+      "author": "xxxA",
+      "version": "v0.0.1",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ShopTheftMod.zip",
+      "description": "一个商店偷窃mod,使用右键50%的概率偷到卡牌遗物,失败要交给商人一张牌,试试你的手气吧"
+    },
+    {
+      "id": "All-In",
+      "name": "All-In",
+      "author": "cielo",
+      "version": "1.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/All-In.zip",
+      "description": "Slot machines in the merchant shop"
+    },
+    {
+      "id": "STS2BaseCamp",
+      "name": "Base Camp",
+      "author": "STS2BaseCamp",
+      "version": "0.4.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/STS2BaseCamp.zip",
+      "description": "A base camp management system with farming, potion warehouse, and pet raising. Raise pets that grant combat buffs!"
+    },
+    {
+      "id": "CalypsosHappyHour",
+      "name": "Calypso'sHappyHour / 卡里普索的欢乐时光",
+      "author": "Yuri'sCat Calypso",
+      "version": "v1.1.4",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/CalypsosHappyHour.zip",
+      "description": "Adds 30+ co-op cards and a new Rest Site option to make multiplayer more fun. 添加30张+和好友交互相关的卡牌，以及额外篝火选项，让联机更加有趣。"
+    },
+    {
+      "id": "LibraryOfRuina",
+      "name": "Library Of Ruina",
+      "author": "ShuiMuNianHua",
+      "version": "v0.5.5",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/LibraryOfRuina.zip",
+      "description": "LibraryOfRuina Mod. Adds new relics, new monster intents, and more detailed intent descriptions for existing monsters."
+    },
+    {
+      "id": "STSVWB",
+      "name": "塔之诗·超凡世界",
+      "author": "HypnosPD",
+      "version": "0.1.34",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/STSVWB.zip",
+      "description": "WIP 参考影之诗·超凡世界创作的STS2模组。 增添了一些新的内容，改变了一些游戏玩法机制。 目前处于早期开发阶段，欢迎提出建议和反馈！ 测试群:594452454"
+    },
+    {
+      "id": "12Talisman",
+      "name": "12Talisman",
+      "author": "silent night",
+      "version": "v0.0.1",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/12Talisman.zip",
+      "description": "Slay the Spire 2 mod that adds the 12 talisman relics."
+    },
+    {
+      "id": "ZAHatInTimeHats",
+      "name": "A Hat In Time - Hats",
+      "author": "[img]res://images/packed/sprite_fonts/silent_energy_icon.png[/img]",
+      "version": "v1.1.1",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ZAHatInTimeHats.zip",
+      "description": "Adds the [blue]Hats[/blue] from [blue]A Hat in Time[/blue] as [gold]Relics[/gold]"
+    },
+    {
+      "id": "sts2-smart-shop",
+      "name": "Smart Shop",
+      "author": "Warboss Dakka",
+      "version": "0.1.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/sts2-smart-shop.zip",
+      "description": "Sell potions, pawn relics, and bridge small gold gaps at the merchant."
+    },
+    {
+      "id": "BetterDrawing",
+      "name": "BetterDrawing",
+      "author": "zhan__wu",
+      "version": "0.1.2",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/BetterDrawing.zip",
+      "description": "A better drawing mod"
+    },
+    {
+      "id": "LustTravel2",
+      "name": "LustTravel2",
+      "author": "香烤奶油 & WRXinYue",
+      "version": "0.10.3",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/LustTravel2.zip",
+      "description": "LustTravel2 mod for Slay the Spire 2"
+    },
+    {
+      "id": "LustTravel2_Patch",
+      "name": "LustTravel2 Patch",
+      "author": "香烤奶油 & WRXinYue",
+      "version": "0.10.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/LustTravel2_Patch.zip",
+      "description": "Patch mod for LustTravel2"
+    },
+    {
+      "id": "SleepItOff",
+      "name": "SleepItOff",
+      "author": "QiYues",
+      "version": "1.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SleepItOff.zip",
+      "description": "睡眠时退休一张卡"
+    },
+    {
+      "id": "NeverEncounterDoorMaker",
+      "name": "Never Encounter Door Maker",
+      "author": "Skxmo",
+      "version": "1.0.0.1",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/NeverEncounterDoorMaker.zip",
+      "description": "Player wont encounter door maker boss in the game"
+    },
+    {
+      "id": "Act4FinalAscent",
+      "name": "Act 4: Final Ascent",
+      "author": "iKenster",
+      "version": "0.1.2e",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Act4FinalAscent.zip",
+      "description": "Act 4: Final Ascent adds The Architect as a full Act 4 boss encounter."
+    },
+    {
+      "id": "Miyu_character",
+      "name": "霞沢美游[Kasumizawa Miyu]",
+      "author": "潜入aw",
+      "version": "1.0.3.8.12.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Miyu_character.zip",
+      "description": "来自SRT学院的 霞沢美游,在路上捡到[gold]意外光滑的石头[/gold]所以[gold]敏捷[/gold]+1 [sine][pink][url=https://space.bilibili.com/1552616472?spm_id_from=333.40164.0.0]bili:潜入aw[/url][/pink][/sine],有建议可以在评论区评论,看看能不能改"
+    },
+    {
+      "id": "LethalDoom",
+      "name": "LethalDoom",
+      "author": "RxL",
+      "version": "1.0.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/LethalDoom.zip",
+      "description": "Adds a new card Lethal Doom for the Necrobinder."
+    },
+    {
+      "id": "TransformOrBanish",
+      "name": "Transform Or Banish",
+      "author": "Bengal",
+      "version": "1.01",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TransformOrBanish.zip",
+      "description": "Adds paid Transform and Banish buttons to card rewards so you can reroll bad picks or blacklist cards for the rest of the run."
+    },
+    {
+      "id": "RelicRewardChoice",
+      "name": "Relic Reward Choice",
+      "author": "Bengal",
+      "version": "1.7.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RelicRewardChoice.zip",
+      "description": "Choose from X relic options after killing elites AND in treasure chest rooms, where X is the value you configure by using the ModConfig mod"
+    },
+    {
+      "id": "DoormakerRework",
+      "name": "DoormakerRework",
+      "author": "hex3",
+      "version": "1.0.0",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/DoormakerRework.zip",
+      "description": "A minor rework to Doormaker, changing his on-draw card consumption effect into an on-play effect."
+    },
+    {
+      "id": "静默猎手卡组拓展",
+      "name": "史上最好的猎手卡牌扩展 \\",
+      "author": "Ultimate Silent Card Expansion (UltimateSilentCardExpansion)",
+      "version": "原始小金人",
+      "category": "玩法擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/静默猎手卡组拓展.zip",
+      "description": "是"
+    },
+    {
+      "id": "AliceDefectCard",
+      "name": "Alice Defect Card Art",
+      "author": "Administrator",
+      "version": "1.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/AliceDefectCard.zip",
+      "description": "Defect card portrait replacements exported by CardArtEditor."
+    },
+    {
+      "id": "AliceDefectSkin",
+      "name": "Alice Defect Skin",
+      "author": "Codex port from ExtraFeminizationMod",
+      "version": "0.1.27",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/AliceDefectSkin.zip",
+      "description": "Ports the Alice Defect skin from the Slay the Spire 1 ExtraFeminizationMod pack to Slay the Spire 2. Replaces Defect combat skin, portrait, selection text, selection background, rest-site animation, selection sound, and death animation while the mod is enabled."
+    },
+    {
+      "id": "SoundReplacer",
+      "name": "Sound Replacer",
+      "author": "Codex local tool",
+      "version": "0.3.8",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SoundReplacer.zip",
+      "description": "Replaces STS2 sound events with bundled ogg/wav/mp3 files."
+    },
+    {
+      "id": "NecrobinderFemPortraits",
+      "name": "尖塔棺者卡图娘化",
+      "author": "失地骑士Hatk&LingEnd",
+      "version": "v0.1.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/NecrobinderFemPortraits.zip",
+      "description": "棺者卡图替换Mod"
+    },
+    {
+      "id": "InesSilent",
+      "name": "Ines Silent",
+      "author": "thunninoi",
+      "version": "v1.0.2",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/InesSilent.zip",
+      "description": "Ines from Arknights as The Silent"
+    },
+    {
+      "id": "RegentFemPortraits",
+      "name": "尖塔储君卡图娘化",
+      "author": "失地骑士HATK&LingEnd",
+      "version": "v0.6.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RegentFemPortraits.zip",
+      "description": "储君卡图替换 mod"
+    },
+    {
+      "id": "regentSkin",
+      "name": "regentSkin",
+      "author": "FeliNyx;anaertailin",
+      "version": "0.0.1",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/regentSkin.zip",
+      "description": "Skin"
+    },
+    {
+      "id": "Mesugaki",
+      "name": "Mesugaki_Regent",
+      "author": "Seic_Oh(セイクオ),Dodobird",
+      "version": "0.1.1",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Mesugaki.zip",
+      "description": "Zako Zako~♡ X(Twitter) : @Seic_Oh @DodoBird0615"
+    },
+    {
+      "id": "RegentFX",
+      "name": "万象辉星[RegentFX]",
+      "author": "Vitech",
+      "version": "0.3.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RegentFX.zip",
+      "description": "为储君的部分卡牌按照卡面还原了特效。Q群1042906424。 Author:Vitech,SSSuika,lt_littlekk  Special thanks:Dior, OLC, Reme"
+    },
+    {
+      "id": "Togawa_Sakiko",
+      "name": "储君替换祥子",
+      "author": "未知",
+      "version": "v0.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Togawa_Sakiko.zip",
+      "description": "無詳細描述。"
+    },
+    {
+      "id": "voicemod",
+      "name": "VoiceModFramework",
+      "author": "Yatima",
+      "version": "1.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/voicemod.zip",
+      "description": "Character voice line framework for Slay the Spire 2. Provides automatic voice playback and subtitle display. Place a voicepack.json in any other mod folder to add voices for additional characters."
+    },
+    {
+      "id": "ancientretexture",
+      "name": "AncientRetexture",
+      "author": "yatima",
+      "version": "1.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ancientretexture.zip",
+      "description": "Replaces Ancient event backgrounds with custom illustrations"
+    },
+    {
+      "id": "decimillipede-feminization",
+      "name": "decimillipede-feminization",
+      "author": "kiteseven77",
+      "version": "0.0.1",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/decimillipede-feminization.zip",
+      "description": "残杀千足虫娘化，目前仅有立绘替换"
+    },
+    {
+      "id": "ChizuruIroncladSkin",
+      "name": "Chizuru Ironclad Skin",
+      "author": "Pelleas",
+      "version": "v0.1.1",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ChizuruIroncladSkin.zip",
+      "description": "Chizuru skin for Ironclad, with CZN Mod Config, optimized combat presentation, voice, effects, and defeat CG."
+    },
+    {
+      "id": "Merchant2CuteII",
+      "name": "Merchant2CuteII",
+      "author": "LinXce",
+      "version": "v1.5.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Merchant2CuteII.zip",
+      "description": "Provides a cute merchantII"
+    },
+    {
+      "id": "NecrobinderOstyVaalmonicaMod",
+      "name": "Necrobinder Osty Vaalmonica Mod",
+      "author": "Hr.R",
+      "version": "0.9.2",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/NecrobinderOstyVaalmonicaMod.zip",
+      "description": "Replace the Necrobinder and Osty template to Vaalmonica Char"
+    },
+    {
+      "id": "NecrobinderOstyAnimMod",
+      "name": "Necrobinder Osty Anim Mod",
+      "author": "Linko&Huiyu",
+      "version": "1.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/NecrobinderOstyAnimMod.zip",
+      "description": "When Necrobinder plays an attack animation, Osty also plays an attack animation if Osty is alive."
+    },
+    {
+      "id": "NecrobinderOstyVisualsMod",
+      "name": "Necrobinder Osty Visuals Mod",
+      "author": "Linko&Huiyu",
+      "version": "1.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/NecrobinderOstyVisualsMod.zip",
+      "description": "影之诗奥契丝与洛伊德替换亡灵契约师与奥斯提皮肤模组"
+    },
+    {
+      "id": "RestSiteFondleCursorMod",
+      "name": "Rest Site Fondle Cursor Mod",
+      "author": "Linko&Huiyu",
+      "version": "1.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RestSiteFondleCursorMod.zip",
+      "description": "Changes the cursor to a custom fondle icon when the mouse hovers over the upper half of a character in the campfire scene."
+    },
+    {
+      "id": "KaltsitNecrobinder",
+      "name": "Kaltsit Necrobinder",
+      "author": "fxhere",
+      "version": "1.1.4",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/KaltsitNecrobinder.zip",
+      "description": "replace necrobinder with kaltsit"
+    },
+    {
+      "id": "ArknightsChenIronclad",
+      "name": "ArknightsChenIronclad",
+      "author": "fxhere",
+      "version": "v0.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ArknightsChenIronclad.zip",
+      "description": "replaces Ironclad's textures with Chen's from Arknights"
+    },
+    {
+      "id": "KaltsitNecrobinder",
+      "name": "KaltsitNecrobinder",
+      "author": "fxhere",
+      "version": "v0.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/KaltsitNecrobinder.zip",
+      "description": "replaces Necrobinder's textures with Kaltsit's from Arknights"
+    },
+    {
+      "id": "ArknightsLingRegent",
+      "name": "ArknightsLingRegent",
+      "author": "fxhere",
+      "version": "v0.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ArknightsLingRegent.zip",
+      "description": "replaces Regent's textures with Ling's from Arknights"
+    },
+    {
+      "id": "ArknightsFroStarSilent",
+      "name": "ArknightsFroStarSilent",
+      "author": "fxhere",
+      "version": "v0.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ArknightsFroStarSilent.zip",
+      "description": "replaces Silent's textures with Fro-Star's from Arknights"
+    },
+    {
+      "id": "ArknightsLeiziDefect",
+      "name": "ArknightsLeiziDefect",
+      "author": "fxhere",
+      "version": "v0.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ArknightsLeiziDefect.zip",
+      "description": "replaces Defect's textures with Leizi's from Arknights"
+    },
+    {
+      "id": "ChenIronclad",
+      "name": "Chen Ironclad",
+      "author": "thunninoi",
+      "version": "v1.0.2",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ChenIronclad.zip",
+      "description": "Chen The Dawnstreak from Arknights as The Ironclad"
+    },
+    {
+      "id": "CEdefect",
+      "name": "Civilight Eterna as The Defect",
+      "author": "thunninoi",
+      "version": "v1.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/CEdefect.zip",
+      "description": "T̶h̶e̶r̶e̶s̶a̶ Civilight Eterna from Arknights as The Defect"
+    },
+    {
+      "id": "StarRail",
+      "name": "StarRail",
+      "author": "我杏美如画",
+      "version": "0.1.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/StarRail.zip",
+      "description": "星替换战士，猫猫替换猎宝，遐蝶替换骨妹，小黑塔替换鸡煲，刻律德菈替换储君。使用bilibili@比逗逗丶mod模版制作，图源@小熊貓max80072，免费发布在bilibili，Nexus mods"
+    },
+    {
+      "id": "StS2_MeiLinTexturePack",
+      "name": "MeiLin Texture Pack",
+      "author": "Geoffery Powell",
+      "version": "v1.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/StS2_MeiLinTexturePack.zip",
+      "description": "Card art texture pack for MeiLinMod."
+    },
+    {
+      "id": "Slay the Sdorica-IzumiSP",
+      "name": "Sdorica-Iz",
+      "author": "Izumi",
+      "version": "v0.999",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Slay the Sdorica-IzumiSP.zip",
+      "description": "来自龙神教派的永生者为何想进塔？ 泉sp替换铁血战士 选人界面添加额外语音  如果你喜欢我的mod，欢迎加群1101589015( OwO )"
+    },
+    {
+      "id": "IRnineIroncladReskin",
+      "name": "流浪龙姬",
+      "author": "伊琳玖IRnine",
+      "version": "1.1.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/IRnineIroncladReskin.zip",
+      "description": "感谢使用龙娘伊琳玖铁甲战士皮肤mod 该mod为完全免费在B站发布 发布者：伊琳玖IRnine 如果您付费购买了此MOD请尽量退款"
+    },
+    {
+      "id": "ATA_Merchant",
+      "name": "商人“阿塔”",
+      "author": "OLC, 阿塔Official",
+      "version": "0.1.3",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ATA_Merchant.zip",
+      "description": "常规商人美化：将商人替换为可爱和风猫猫！ 本mod由 OLC 制作，角色形象由阿塔Official原创 美术资源由百南芋绘制（已委托并获得使用权） 相关内容版权归阿塔Official所有（All rights reserved） 本作品采用 CC BY-NC-ND 4.0 协议授权 转载请注明出处，禁止修改、二次创作及商业用途"
+    },
+    {
+      "id": "ATA_IronClad",
+      "name": "机娘“阿塔”",
+      "author": "OLC, 阿塔Official",
+      "version": "0.1.5",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ATA_IronClad.zip",
+      "description": "铁甲战士角色美化：将铁甲战士替换为机娘“阿塔”，并替换大多数卡图 本mod由 OLC 制作，角色形象由阿塔Official原创 美术资源由百南芋 / Coria / INGOTzw / 闪光菠萝皮等画师绘制（已委托并获得使用权） 相关内容版权归阿塔Official所有（All rights reserved） 本作品采用 CC BY-NC-ND 4.0 协议授权 转载请注明出处，禁止修改、二次创作及商业用途"
     },
     {
       "id": "RosmontisSkinForRegent",
-      "name": "迷迭香-儲君皮膚美化 Mod",
-      "author": "傀儡師_lite",
+      "name": "迷迭香-储君皮肤Mod",
+      "author": "bilibili : 傀儡师_lite",
       "version": "v0.0.2",
       "category": "皮膚美化類",
-      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RosmontisSkin.zip",
-      "description": "以《明日方舟》中的人氣角色「迷迭香」形象替換遊戲內「儲君」的 Spine 戰鬥模型與動作，包含多套可切換皮膚和特別語音包。"
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RosmontisSkinForRegent.zip",
+      "description": "以明日方舟中的角色迷迭香的形象替换储君的皮肤模组，包含迷迭香的原皮和两套皮肤，以及作为敌人形态出现的虚实之握。"
+    },
+    {
+      "id": "SkinManagerAndSkinPanelMod",
+      "name": "皮肤管理器与皮肤面板",
+      "author": "傀儡师_lite",
+      "version": "v0.0.1",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SkinManagerAndSkinPanelMod.zip",
+      "description": "该Mod可以提供统一替换、管理杀戮尖塔2原版角色spine模型的接口，同时在提供一个在选择角色界面切换皮肤的面板。"
+    },
+    {
+      "id": "杀戮尖塔2战士全卡面娘化",
+      "name": "杀戮尖塔2战士全卡面娘化",
+      "author": "mashu",
+      "version": "1.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/杀戮尖塔2战士全卡面娘化.zip",
+      "description": "杀戮尖塔2战士全卡面娘化 card pack"
+    },
+    {
+      "id": "ironcladSkin",
+      "name": "ironcladSkin",
+      "author": "anaertailin_FeliNyx",
+      "version": "0.0.1",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ironcladSkin.zip",
+      "description": "Skin"
+    },
+    {
+      "id": "Orca-Plate Mail",
+      "name": "Plate Mail Orca",
+      "author": "独角渡鸦",
+      "version": "0.0.1",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Orca-Plate Mail.zip",
+      "description": "将战士替换为银龙Orca【板甲】"
+    },
+    {
+      "id": "MonsterReplacer",
+      "name": "间桐樱替换区",
+      "author": "MonsterReplacer",
+      "version": "1.0.0",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/MonsterReplacer.zip",
+      "description": "怪物替换"
+    },
+    {
+      "id": "TheDefectCardArtMod",
+      "name": "The Defect - Card art mod",
+      "author": "KD-DD",
+      "version": "v0.12",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TheDefectCardArtMod.zip",
+      "description": "Test version. Just enjoy the lovely version of the Defect！ 测试版本，试试这版可爱的鸡煲吧？"
+    },
+    {
+      "id": "defect_sfw",
+      "name": "鸡煲 娘化 SFW3.27",
+      "author": "anertailin_FeliNyx_洛艸_poema",
+      "version": "0.0.1",
+      "category": "皮膚美化類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/defect_sfw.zip",
+      "description": "Skin"
     },
     {
       "id": "TH_Sakuya",
-      "name": "角色擴展: 十六夜咲夜",
+      "name": "十六夜咲夜",
       "author": "Reddo",
       "version": "1.8",
       "category": "角色擴展類",
       "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TH_Sakuya.zip",
-      "description": "加入來自《東方 Project》的新角色：完美與瀟灑的從者「十六夜咲夜」。擁有獨立的 107 張卡牌、15 件新遺物和 5 瓶特製藥水。"
+      "description": "增加了一个来自东方Project的新角色，十六夜咲夜。 拥有107张角色卡牌(含多人游戏卡牌与先古牌)，7件新事件、15件新遗物和5瓶新药水。"
+    },
+    {
+      "id": "Kafka",
+      "name": "Kafka",
+      "author": "草食系妹控",
+      "version": "v0.12.2",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Kafka.zip",
+      "description": "崩坏：星穹铁道 卡芙卡 自定义角色MOD。以触电、引爆、追击、改写四大机制编织命运之网。"
+    },
+    {
+      "id": "TheMaid",
+      "name": "The Maid",
+      "author": "Genius Fox",
+      "version": "v0.0.0",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TheMaid.zip",
+      "description": "She doesn't want to climb but her master said so. Well, architect has soy sauce at his room so it's not a big dal"
+    },
+    {
+      "id": "Acacia",
+      "name": "AcaciaMod",
+      "author": "Acacia",
+      "version": "1.0",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Acacia.zip",
+      "description": "Mod 描述"
+    },
+    {
+      "id": "NueMod",
+      "name": "Houjuu Nue",
+      "author": "Unknown",
+      "version": "v0.9.5",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/NueMod.zip",
+      "description": "A new character from the Touhou Project!"
+    },
+    {
+      "id": "StS2Hoshino",
+      "name": "StS2Hoshino",
+      "author": "joy1999",
+      "version": "v0.0.12",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/StS2Hoshino.zip",
+      "description": "Slay the Spire 2 BlueArchive Hoshino character mod"
+    },
+    {
+      "id": "EnkiduMod",
+      "name": "EnkiduMod",
+      "author": "wfxt",
+      "version": "v0.0.8",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/EnkiduMod.zip",
+      "description": "EnkiduMod for Slay the Spire 2"
+    },
+    {
+      "id": "MataraMod",
+      "name": "摩多罗 - 秘神角色模组",
+      "author": "leddele",
+      "version": "1.0.0",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/MataraMod.zip",
+      "description": "来自《东方天空璋》的秘神摩多罗隐岐奈，包含独特的季节与门扉机制。需要 BaseLib 支持。"
+    },
+    {
+      "id": "SK",
+      "name": "SK",
+      "author": "YL",
+      "version": "1.0",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/SK.zip",
+      "description": "Mod 描述"
+    },
+    {
+      "id": "CrimsonScepter_Angelina_Mod",
+      "name": "CrimsonScepter_Angelina_Mod",
+      "author": "绯红权杖攻略组",
+      "version": "v0.1.10",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/CrimsonScepter_Angelina_Mod.zip",
+      "description": "绯红权杖攻略组出品的明日方舟角色安洁莉娜的Mod"
+    },
+    {
+      "id": "LinkuraMod",
+      "name": "LinkuraMod",
+      "author": "KCFindstr",
+      "version": "0.2.0",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/LinkuraMod.zip",
+      "description": "Adds contents inspired by Link! Like! LoveLive!. Special thanks: @密友"
+    },
+    {
+      "id": "MeiLinMod",
+      "name": "MeiLinMod",
+      "author": "lozalia",
+      "version": "v0.2.5",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/MeiLinMod.zip",
+      "description": "MeiLin playable character mod for Slay the Spire 2."
+    },
+    {
+      "id": "Deadcells",
+      "name": "Deadcells mod",
+      "author": "[CSTG]GongJuYin",
+      "version": "v0.1.5",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Deadcells.zip",
+      "description": "v0.103.2版本适配，暂时将原有的卡图、遗物等图片添加进游戏中（后续可能会重新制作）。"
+    },
+    {
+      "id": "zsproject",
+      "name": "ZS测试Mod",
+      "author": "zswzxc",
+      "version": "0.4",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/zsproject.zip",
+      "description": "Mod 描述"
+    },
+    {
+      "id": "TH_Rin",
+      "name": "火焰猫燐",
+      "author": "Reddo",
+      "version": "1.4",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TH_Rin.zip",
+      "description": "加入了来自东方Project的角色，火焰猫燐。 拥有101张角色卡牌(含多人游戏卡牌与先古牌)，81张尸体衍生牌、5个新事件、15件新遗物和5瓶新药水以及1个新怪物。"
+    },
+    {
+      "id": "TH_Alice",
+      "name": "爱丽丝·玛格特洛伊德",
+      "author": "Reddo",
+      "version": "2.1",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TH_Alice.zip",
+      "description": "加入了来自东方Project的角色，七色的人偶师爱丽丝。 拥有95张角色卡牌(含多人游戏卡牌与先古牌)，6个新事件，10个新遗物与3瓶新药水。"
+    },
+    {
+      "id": "ShinkiMod",
+      "name": "神绮sama",
+      "author": "leddele",
+      "version": "1.0.0",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/ShinkiMod.zip",
+      "description": "神！"
+    },
+    {
+      "id": "CyanrainSora",
+      "name": "CyanrainSora",
+      "author": "Author",
+      "version": "v0.0.0",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/CyanrainSora.zip",
+      "description": "Slay the Spire 2 character mod created from a template for use with BaseLib"
+    },
+    {
+      "id": "KaLi_mod",
+      "name": "KaLi mod",
+      "author": "LingYin",
+      "version": "0.9.8.3",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/KaLi_mod.zip",
+      "description": "血雾弥漫，尸横遍野！ 作者B站账号:UID:1842244278"
+    },
+    {
+      "id": "Ryoshu",
+      "name": "Ryoshu",
+      "author": "帽子",
+      "version": "0.3.2",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Ryoshu.zip",
+      "description": "良秀"
+    },
+    {
+      "id": "MzmChar",
+      "name": "Mutsumi",
+      "author": "巫游",
+      "version": "0.1.5",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/MzmChar.zip",
+      "description": "若叶睦 / Wakaba Mutsumi character mod."
+    },
+    {
+      "id": "Mordekaiser",
+      "name": "莫德凯撒",
+      "author": "ice snow",
+      "version": "0.1.7",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Mordekaiser.zip",
+      "description": "A mod"
+    },
+    {
+      "id": "Remilia",
+      "name": "Remilia",
+      "author": "Feiyap",
+      "version": "v0.0.1",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Remilia.zip",
+      "description": "蕾米莉亚MOD"
+    },
+    {
+      "id": "MokouMod",
+      "name": "The Immortal（藤原妹红）",
+      "author": "Autmn",
+      "version": "v1.0.4",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/MokouMod.zip",
+      "description": "A mod featuring Fujiwara no Mokou from Touhou Project."
+    },
+    {
+      "id": "TH_Yuyuko",
+      "name": "西行寺幽幽子",
+      "author": "Reddo",
+      "version": "1.4",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TH_Yuyuko.zip",
+      "description": "加入了来自东方Project的新角色，天衣无缝的亡灵：西行寺幽幽子。 拥有111张角色卡牌(含多人游戏卡牌与先古牌)，6个新事件，15件新遗物与5瓶新药水。"
+    },
+    {
+      "id": "Watcher",
+      "name": "Watcher",
+      "author": "lamali",
+      "version": "v1.4.3",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Watcher.zip",
+      "description": "The Watcher - ports the original character to Sts2  Credits: chaendizzle - Calm, Divinity and Wrath SFX / VFX Snumodder - Korean localization NoFires - Chinese localization Continuous and Nitablade - Russian localization iwasreturnsolomon-svg - Japanese localization Valnar38 - Italian localization Cany0udance - for helping me port the animations Pet-Slime - Energy counter Vfx"
+    },
+    {
+      "id": "Notira",
+      "name": "Notira",
+      "author": "Ridress",
+      "version": "0.0.1",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/Notira.zip",
+      "description": "玩galgame的"
+    },
+    {
+      "id": "LunaDelta",
+      "name": "LunaDelta",
+      "author": "KujouNao",
+      "version": "v1.7.9",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/LunaDelta.zip",
+      "description": "A MOD FOR A MAGIC"
+    },
+    {
+      "id": "RienSang",
+      "name": "The Index Nursefather Yi Sang",
+      "author": "Eka",
+      "version": "v1.0.2",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/RienSang.zip",
+      "description": "The Index Nursefather Yi Sang character mod, based on Limbus Company."
+    },
+    {
+      "id": "LimbusCore",
+      "name": "Limbus Core",
+      "author": "Eka",
+      "version": "v1.0.2",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/LimbusCore.zip",
+      "description": "This mod handles the Sanity System and generic Powers from Limbus Company."
+    },
+    {
+      "id": "TH_Youmu",
+      "name": "魂魄妖梦",
+      "author": "Reddo",
+      "version": "1.2",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/TH_Youmu.zip",
+      "description": "加入了来自东方Project的角色，半人半灵的庭师，魂魄妖梦。 拥有101张角色卡牌(含多人游戏卡牌与先古牌)，6个新事件，18件新遗物与4瓶新药水。"
+    },
+    {
+      "id": "rover",
+      "name": "漂泊者角色模组",
+      "author": "MC-druy",
+      "version": "1.2.0",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/rover.zip",
+      "description": "添加了一位角色"
+    },
+    {
+      "id": "wylder",
+      "name": "追踪者角色mod",
+      "author": "kashenmir",
+      "version": "1.0",
+      "category": "角色擴展類",
+      "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.0/wylder.zip",
+      "description": "添加了全新角色:追踪者"
     }
   ]
 }
