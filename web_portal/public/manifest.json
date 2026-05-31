@@ -1,9 +1,9 @@
 {
   "manager": {
-    "version": "1.0.8",
-    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.8/SpireDarkModManager.exe",
+    "version": "1.0.9",
+    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.9/SpireDarkModManager.exe",
     "changelog": [
-      "fix: resolve webview destroy AttributeError by using os._exit(0) and make api_apply more robust",
+      "feat: implement delete mod API and frontend button, add pack_mods script to repo",
       ""
     ]
   },
