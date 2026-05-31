@@ -19,8 +19,8 @@ else:
 
 CONFIG_FILE = os.path.join(EXE_DIR, "config.json")
 
-# Adaptive workspace detection: use EXE_DIR if folders like '必装前置' exist, else use parent directory
-if os.path.exists(os.path.join(EXE_DIR, "必装前置")):
+# Adaptive workspace detection: use EXE_DIR if folders like '必装前置' or '必裝前置' exist, else use parent directory
+if os.path.exists(os.path.join(EXE_DIR, "必装前置")) or os.path.exists(os.path.join(EXE_DIR, "必裝前置")):
     WORKSPACE_DIR = os.path.abspath(EXE_DIR)
 else:
     WORKSPACE_DIR = os.path.abspath(os.path.join(EXE_DIR, ".."))
@@ -83,36 +83,6 @@ def sync_local_mods_to_default(config):
                         changed = True
         except Exception as e:
             print(f"Error syncing active mods to Default: {e}")
-            
-    # 2. Scan mods_disabled/ (only physical folders should be imported as active, ignore junctions)
-    disabled_dir = os.path.join(game_path, "mods_disabled")
-    if os.path.exists(disabled_dir):
-        try:
-            for item in os.listdir(disabled_dir):
-                if item.lower() in EXCLUDE_DIRS:
-                    continue
-                item_path = os.path.join(disabled_dir, item)
-                if os.path.isdir(item_path) and not is_junction_path(item_path):
-                    mod_id = item
-                    json_files = find_mod_jsons_fast(item_path)
-                    if json_files:
-                        for j_file in json_files:
-                            try:
-                                if os.path.getsize(j_file) <= 50 * 1024:
-                                    with open(j_file, 'r', encoding='utf-8-sig') as f:
-                                        raw_content = f.read()
-                                    cleaned = clean_json_comments(raw_content)
-                                    data = json.loads(cleaned)
-                                    if isinstance(data, dict) and 'id' in data:
-                                        mod_id = data['id']
-                                        break
-                            except Exception:
-                                pass
-                    if mod_id not in default_list:
-                        default_list.append(mod_id)
-                        changed = True
-        except Exception as e:
-            print(f"Error syncing disabled physical mods to Default: {e}")
             
     if changed:
         config["profiles"]["Default"] = default_list
