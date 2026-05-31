@@ -1,9 +1,9 @@
 {
   "manager": {
-    "version": "1.0.7",
-    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.7/SpireDarkModManager.exe",
+    "version": "1.0.8",
+    "download_url": "https://github.com/Door3172/spire-dark-mod-manager/releases/download/v1.0.8/SpireDarkModManager.exe",
     "changelog": [
-      "fix: only count installed mods as enabled in UI statistics and conflict detection",
+      "fix: resolve webview destroy AttributeError by using os._exit(0) and make api_apply more robust",
       ""
     ]
   },
