@@ -27,7 +27,7 @@ jobs:
         run: |
           python -m venv venv
           .\venv\Scripts\activate
-          pip install bottle pywebview pyinstaller
+          pip install bottle pywebview "pyinstaller<6.0"
           $tag = "${{ github.ref_name }}"
           $version = $tag.TrimStart('v')
           (Get-Content mod_manager/main.py) -replace 'CURRENT_VERSION\s*=\s*".*"', "CURRENT_VERSION = `"$version`"" | Set-Content mod_manager/main.py
